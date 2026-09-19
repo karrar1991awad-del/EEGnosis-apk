@@ -1,0 +1,2 @@
+FIGURE 2 25. Excessively Low Impedance Due to Salt Bridge. Excessive application of electrode paste smeared on the scalp can act as a “salt bridge” between two 
+electrodes ( Fp1 and F3) and causes falsely low voltage activity.9

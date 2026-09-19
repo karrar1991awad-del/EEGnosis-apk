@@ -1,0 +1,6 @@
+FIGURE 2 19. Pulse Artifact; Electrocerebral Inactivity (ECI). Pulse artifact (open arrow) is caused by mechanical movement resulting from pulsation artifact that occurs 
+when an EEG electrode is placed over the pulsating blood vessel. The mechanical movement caused by pulsation of an artery can cause a rhythmic smooth or sharply contoured 
+slow wave (sawtooth) that sometimes simulates EEG activity. Pulse artifact is time-locked with the EKG but is slightly delayed by approximately 200 msec, since the pulse requires 
+time to travel from the heart to the blood vessel. Pulse artifact can occur in any lead but most commonly in frontal and temporal regions, and less commonly over the occipital 
+region. Pulse artifact can be identiﬁ  ed by touching the electrode generating it. If the patient is lying on the involved electrode, the artifact sometimes may be eliminated by 
+moving the head slightly. Relocation of electrode may eliminate the artifact.5,7,8

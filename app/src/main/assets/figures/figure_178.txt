@@ -1,0 +1,5 @@
+FIGURE 261.  Sixty-Cycle Artifact. Sixty-cycle artifact arises from the 60-cycle power source, especially in the electrodes that have a high resistance from grease, dirt, and 
+dead skin. Reducing impedance to less than 5-kΩ and having a stable ground electrode on the patient will eliminate this artifact. The 60-Hz ﬁ  lter (arrow head) helps to eliminate 
+this electrical artifact but should not be used on a routine basis, as the 60-cycle artifact is a useful warning sign of poor electrode contact or an improper input selection. Sixty-
+cycle artifact in all channels of the EEG recording raises the concern about electrical safety and should be further investigated, speciﬁ  cally looking for ground loops or double 
+grounding.2,7,1,12

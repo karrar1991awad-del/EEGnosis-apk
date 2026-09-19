@@ -1,0 +1,4 @@
+FIGURE 25. Eye Movement Artifact (Nystagmus). Constant horizontal nystagmus. EEG shows ﬂ  attening of the background activity with rapid lateral eye movements 
+characterized by “out-of-phase” potentials between F7 and F8.
+The cornea produces a potential of approximately 50–100 mV. When the eye moves to the left, the cornea comes closer to the F7 electrode, causing a positive phase reversal 
+with maximal positive potential at the F7 electrode, and a negative phase reversal with maximal negative potential recorded at the F8 electrode.2

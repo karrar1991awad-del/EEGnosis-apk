@@ -1,0 +1,4 @@
+FIGURE 2 23. Glossokinetic Artifact. Glossokinetic artifact is caused by movement of tongue, which produces a DC potential. The tip of the tongue has a negative electrical 
+charge with respect to the root. The activity can be either unilateral or bilateral depending on the direction of tongue movement. The electrical ﬁ  eld can be widely distributed, 
+although it is most often noted in the temporal electrodes. Sometimes it can simulate cerebral slow wave activity, especially when the mouth remains closed during tongue 
+movements.

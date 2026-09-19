@@ -1,0 +1,2 @@
+FIGURE 2 53. Respiration Artifact. Periodic positive sharp transients time-locked with body movement related to artiﬁ  cial respirator indicate respiratory artifact. Movement 
+causes mechanically induced impedance changes in electrodes. Respiratory artifact may also appear as a slow or sharp wave.7

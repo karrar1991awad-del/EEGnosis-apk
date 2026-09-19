@@ -1,0 +1,6 @@
+FIGURE 24. Eye Movement Artifact (Horizontal Nystagmus and Eye Closure). Another example of horizontal nystagmus. Cornea produces a potential of approximately 
+50–100 mV. When the eye moves to the left, the cornea comes closer to the F7 electrode, causing a positive phase reversal with maximal positive potential at the F7 electrode, 
+and a negative phase reversal with maximal negative potential recorded at the F8 electrode (double-head arrow). 
+When the eyes are closed (open arrow), the eyeballs are in a neutral position (Bell’s phenomenon), and this upward eye movement is detected by a maximal positive potential 
+recorded at the Fp1 and Fp2 electrodes with a falloﬀ  potential recorded at the next electrodes (F3 and F4). These cause downward deﬂ  ections of EEG at Fp1-F3 and Fp2-F4 
+channels. When the eyeball moves in a downward direction, the inverse occurs.

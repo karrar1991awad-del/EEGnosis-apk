@@ -1,0 +1,7 @@
+FIGURE 2 21. Ballistocardiographic Artifact. EEG in a 6-year-old boy with severe anoxic encephalopathy shows diﬀ use, low-voltage 2- to 2.5-Hz delta activity, maximally 
+expressed in Fp1, time-locked to the EKG.
+Ballistocardiographic artifact is the result of rocking movement of the patient’s entire body and head each time the heart beats. This may be due partly to the pulsatile force on 
+the aortic arch from the abrupt redirection of blood ﬂ  ow. Ballistocardiographic artifact is similar in morphology to pulse artifact but is more widespread. EKG demonstrates the 
+relationship to the pulsations, although it is not necessarily time-locked with the signal. The ballistocardiographic artifact can mimic diﬀ use delta slowing indicating the presence 
+of brain activity. This artifact is seen more frequently during the electrocerebral inactivity recording. The artifact can be removed by moving the patient’s head or putting a pillow 
+under the patient’s neck so that electrode movement is against the bed.2,8

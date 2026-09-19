@@ -1,0 +1,7 @@
+FIGURE 3 21. Trace Alternant. Background activity in NREM sleep is discontinuous before 36 weeks CA. Between 36 and 38 weeks CA, two NREM EEG patterns present 
+(1) continuously diﬀ use high-voltage, slow-wave activity and (2) trace alternant—this consists of bursts of activity (delta activity admixed with faster frequencies) with an 
+amplitude of 50–300 μV, interspersed between periods of decreased amplitude (resembles the EEG during wakefulness and active sleep and consists of mixed frequencies with 
+amplitudes of 25–50- μV). Trace alternant begins to wane by 38–40 weeks CA and disappears by 44–46 weeks CA when it is replaced by continuous slow-wave activity. After that, 
+sleep spindles present at around 46 weeks CA.
+The distinction between trace alternant and tracé discontinu is the amplitude of IBI (interburst interval). In tracé discontinu, it is less than 25 μV, whereas in trace alternant, 
+it is more than 25 μV.2,4,5

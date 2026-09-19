@@ -1,0 +1,7 @@
+FIGURE 3 33. Burst-Suppression Pattern; Severe Hypoxic-Ischemic Encephalopathy. (Same patient as in Figure 3-5 and 3-7) A 31-week CA infant with severe HIE. EEG 
+shows a nonreactive burst suppression pattern. The burst of activity contains sharp waves and spikes intermixed with delta and faster frequencies. The interburst interval (IBI) is of 
+very low amplitude. The patient died 1 day after this EEG. 
+Burst suppression is the most extreme degree of discontinuity and represents an intermediate degree between depressed and undiﬀ erentiated EEG and electrocerebral 
+inactivity. During the burst, activity contains intermixed components of poorly organized delta and theta frequencies, at times, with spikes or sharp waves. The IBI contains very 
+low-voltage (<5 μV) activity that can last more than 20 sec. Burst suppression is diﬀ erent from tracé discontinu in that it is excessively discontinuous and invariant and completely 
+unreactive to noxious stimulation. Also, there is no spontaneous cycling of state. Some patients may have myoclonic jerks during the bursts. Poor outcome is noted in 85–100%.4,5,8

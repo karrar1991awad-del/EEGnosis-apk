@@ -1,0 +1,4 @@
+FIGURE 7 44. Paroxysmal Fast Activity (PFA); Lennox-Gastaut Syndrome (LGS). A 9-year-old boy with severe mental retardation and multiple seizure types, including 
+tonic, atonic, atypical absence, and generalized tonic-clonic seizures. EEG during wakefulness showed generalized slow spike-wave discharges (not shown). EEG during slow sleep 
+demonstrates frequent bursts of high-voltage rhythmic rapid spikes at around 14 Hz with no clinical accompaniment. This EEG pattern is called PFA and is an EEG hallmark of LGS 
+during NREM sleep. Bursts of more than 5 sec are usually correlated with clinical tonic seizures.

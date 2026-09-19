@@ -1,0 +1,3 @@
+FIGURE 18. Fast Alpha Variant. The fast alpha variant pattern (arrow) is a harmonic of the alpha rhythm that has a frequency approximately twice that of alpha rhythm, 
+usually within the range of 16 to 20 Hz, with a voltage of 20-40 μV. It is usually intermingled with alpha rhythm and shows reactivity and a distribution similar to that of alpha 
+rhythm.

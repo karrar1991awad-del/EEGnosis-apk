@@ -1,0 +1,8 @@
+FIGURE 9 51. Paradoxical Lateralization; Focal Cortical Dysplasia: Left Parietal Lobe. (Same patient as in Figure 9-46) The extra electrodes (F3’ , F4’ , C3’ , C4’ , P3’ , and P4’) 
+were added between the frontal, central, and parietal electrodes in both hemispheres and the Fz, Cz, and Pz electrodes to precisely identify the epileptic focus. An interictal EEG 
+shows a train of spikes in the Pz and P4’ electrodes (large arrow), which are opposite to the epileptic focus caused by a focal cortical dysplasia (FCD) in the left parietal region 
+(arrow). The patient has been seizure-free since the resection of epileptogenic zone, which included the FCD and surrounding tissue in the left lateral and mesial parietal region.
+An epileptic focus on the mesial surface of one cerebral hemisphere can project epileptiform activity obliquely to the opposite hemisphere, leading to paradoxical lateralization 
+of the epileptiform activity.42 “Paradoxical lateralization” is most likely the result of a horizontal dipole located within the interhemispheric ﬁ  ssure.43
+Magnetoencephalogram (MEG) only detects dipoles horizontal to the surface, and is more sensitive to generators lining the sulci than ones from gyral surfaces. Therefore, MEGs 
+may be helpful in detecting an epileptic focus in the mesial aspect of hemispheres.92

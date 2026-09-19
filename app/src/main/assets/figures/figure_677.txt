@@ -1,0 +1,3 @@
+FIGURE 9 69. Mesio-Temporal Lobe Epilepsy (mTLE); Subtle Right Anterior Temporal Spikes at T1-T2 Channel. (Same recording as in Figure 9-67) EEG during NREM 
+sleep shows a subtle spike at the T1-T2 channel. This spike would not be detected using a standard 10-20 international electrode system.
+A bipolar anteroposterior montage using the 10-20 electrode system would incompletely record about 40–55% of anterior temporal spikes.117

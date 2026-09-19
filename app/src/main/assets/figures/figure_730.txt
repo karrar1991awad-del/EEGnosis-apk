@@ -1,0 +1,10 @@
+FIGURE 9 122. Secondary Bilateral Synchrony (SBS); Unilateral Polymicrogyria (PMG). A 10-year-old right-handed girl with mental retardation, behavioral disturbances, left hemiparesis, 
+and frequent seizures, including generalized tonic-clonic, absence, and complex partial seizures (head and eyes deviating to the left side with asymmetric tonic stiﬀ ening), associated with unilateral 
+polymicrogyria caused by congenital CMV infection. (A) Axial inversion recovery MRI shows multiple small undulating gyri in the right frontal region (large arrow) and thickened cortex with diﬀ use 
+small irregular gyri in the frontal-temporal regions (small arrows). (B) Coronal T2 WI MRI shows diﬀ use small irregular gyri with indistinct gray-white interface in the right frontal-temporal region (small 
+arrows). EEG demonstrates bilateral synchronous irregular spike-wave activity with frontal and right hemispheric predominance (secondary bilateral synchrony).
+Frontal lobe seizures can manifest as atypical absence seizures, with generalization based on SBS (Millan et al., 2001). MEG detected the sources of SBS in the medial frontal lobe (Tanaka et al., 
+2005). The thalamus plays an important role in the occurrence of bilateral discharges in patients with partial epilepsy (SBS). Spontaneous interictal epileptiform discharges in a penicillin-induced 
+cortical epileptogenic focus are propagated antidromically into the thalamus. On the other hand, thalamic stimulation can induce epileptiform discharges in the hippocampus. The thalamus also 
+regulates cortical excitability and synchronization of seizure activity in limbic structures and the neocortex. Thalamic lesions causing intractable partial epilepsy also suggest that the thalamus might 
+have a role in seizure propagation.228,229

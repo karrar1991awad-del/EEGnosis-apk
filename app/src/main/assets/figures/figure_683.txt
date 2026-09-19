@@ -1,0 +1,15 @@
+FIGURE 9 75. Ictal Slow Direct Current (DC) Shift; Gelastic Epilepsy caused by Right Mesial Temporal Cortical Dysplasia. A 3-year-old boy suﬀ ered his ﬁ  rst seizure, 
+which lasted over an hour, at 11 months of age. His eyes were open and unresponsive, and he was drooling. The twitching began on the left side and then generalized. He was 
+found to be febrile. A left-sided Todd’s paralysis was noted for 3–4 hours. EEG showed slowing in the right temporal lobe. MRI showed edema of the right temporal lobe. He was 
+started on oxcarbazepine and was seizure-free until 4 months ago, when he began experiencing frequent complex partial seizures and persistent left-side facial weakness. During 
+the seizure, his breath became heavy, his eyes were glazed over, and he would look down and to the left. He will have a left-sided smile only before starting to laugh. Axial FLAIR 
+and coronal T2 WI MRIs show signal hyperintensity and atrophy of the right mesial temporal lobe (open arrow). EEG with an LFF setting of 0.05 Hz during his typical gelastic 
+seizures (in box) shows a burst of positive sharp waves at T4, followed immediately by a slow DC shift at T2 with overriding rhythmic activity in the same area. Note tachycardia at 
+the seizure onset.
+An ictal slow DC shift is a slow and sustained change in EEG voltage resulting from a change in the function or interaction of neurons, glia, or both.125,126 Ictal slow baseline shifts 
+can be recorded with DC ampliﬁ  ers. They are not seen with conventional EEG systems. When the high-pass ﬁ  lter is opened to 0.01–0.1 Hz, ictal baseline shifts are present in scalp 
+and intracranially recorded seizures and may have localizing value.127–130
+Usually, scalp-recorded ictal DC shifts are not successfully recorded because movements during clinical seizures could cause artifacts. They are highly speciﬁ  c but low in 
+sensitivity. Ictal DC shifts were seen in 14–40% of recorded seizures and their sensitivity varied.127,131,132 Scalp-recorded DC shifts were detected when seizures were clinically 
+intense, while no slow shifts were observed in small seizures.127 They were restricted to 1–2 electrodes, very closely related to the onset of low-voltage fast activity and 
+electrodecrement.133

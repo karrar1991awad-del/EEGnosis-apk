@@ -1,0 +1,12 @@
+FIGURE 9 108. lctal Slow Direct Current (DC) Shift; Angiocentric Neuroepithelial Tumor (ANET), Right Occipital. A 20-year-old male with a history of medically 
+intractable epilepsy and right parieto-occipital lesion. He experiences two types of seizures. The ﬁ  rst type of seizure was blacking-out episodes where he made clicking noises, had 
+activity arrest, picked at his clothing, and stared upward and to the left for about 2–4 minutes. He had dizziness and was tired afterward. The second type of seizure was seeing 
+colors in periphery of his vision with blurring of central vision. MRI shows a discrete lesion in the right occipital region. EEG during the seizure with LFF setting of 0.1 Hz shows ictal 
+onset in the right occipital region (open arrow). Ictal slow DC shift was noted immediately after the ictal onset (box).
+An ictal slow DC shift is a slow and sustained change in EEG voltage resulting from a change in the function or interaction of neurons, glia, or both.125,126 Ictal slow baseline shifts 
+could be recorded with DC ampliﬁ  ers. They were not seen with conventional EEG systems. When the high-pass ﬁ  lter was opened to 0.01–0.1 Hz, ictal baseline shifts were present 
+in scalp and intracranially recorded seizures and could have localizing value.127–130 
+Usually, scalp-recorded ictal DC shifts are not successfully recorded because movements during clinical seizures could cause artifacts. They are highly speciﬁ  c but low in 
+sensitivity. Ictal DC shifts were seen in 14–40% of recorded seizures and their sensitivity varied.127,131,132 Scalp-recorded DC shifts were detected when seizures were clinically 
+intense, while no slow shifts were observed in small seizures. They were restricted to 1–2 electrodes, very closely related to the onset of low-voltage fast activity and 
+electrodecrement.127,133

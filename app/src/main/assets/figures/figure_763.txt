@@ -1,0 +1,26 @@
+FIGURE 9 155. High-Frequency Oscillations (HFOs); Slow Direct-Current (DC) Shifts or Infraslow Activity (ISA). A 2-year-old right-handed boy with very frequent, 
+brief seizures described as clusters of asymmetric tonic seizures, greater on the left side with head drops occurring 10–20 times daily. Brain MRI was normal. Interictal PET 
+showed hypometabolism in the right frontal lobe. Interictal subdural EEG (sEEG) shows nearly continuous polyspike-wave discharges at FPG7 (box A). The ictal sEEG onset (box 
+B) demonstrates disruption of interictal EEG activity at FPG7 and the presence of diﬀ use low-voltage fast activity consistent with high-frequency oscillations (HFOs), maximally 
+expressed at FPG7. Immediately after that, slow negative direct-current (DC) shifts are noted at FPG7.
+Localized negative DC shifts were recorded during penicillin-induced seizures in animal models, and they occur in association with sustained paroxysmal activity, suggesting 
+that these negative shifts are an expression of cellular depolarization.286 The DC shifts were of maximal voltage at the center of the focus and had narrower distribution than 
+paroxysmal activity.287 There are only limited reports of subdurally recorded DC potentials in humans.288 Other elements than neurons are additionally involved, including glia, 
+ionic changes, as well as those of the blood-brain barrier and of cerebral blood ﬂ  ow, have been implicated. Ictal DC shifts or infraslow activity (ISA) obtained from scalp recordings 
+with standard EEG machines with a high-pass ﬁ  lter of 0.1 Hz might be able to diﬀ erentiate between purely focal seizures versus those where there is an additional generalized 
+component.129 Ictal onset baseline shifts are part of a marked increase of interictal DC shifts. The current digital EEG instruments that have a high-pass ﬁ  lter of 0.1 or at times even 
+0.01 Hz can record scalp and intracranial DC shifts and could have localizing value.127,289,290 Rodin and Funke have deﬁ  ned ISA (DC shifts) as the frequency band of 0.01–0.1 Hz 
+rather than 0.5 Hz because respirations, which typically have a frequency of 0.2–0.4 Hz, can contaminate the tracings when a low-pass ﬁ  lter of 0.5 Hz is used.291 In contrast to the 
+conventional EEG frequencies, it has a small electrical ﬁ  eld, which is negative at the site of activity and positive at a distance.292
+Ikeda concluded that (1) ictal DC shifts were observed in 85% of all the recorded seizures in subdural EEG and in 23% of all the scalp EEG recordings by using LFF of 0.016 Hz 
+for the AC ampliﬁ  er; (2) ictal DC shifts were mainly surface negative in polarity; (3) they started 1–10 sec earlier than the conventional ictal EEG onset; (4) ictal DC shifts were 
+seen in a more restricted area (one to two electrodes) compared with the dimension deﬁ  ned by the conventional ictal EEG changes; (5) ictal DC shifts often coincided with the 
+electrodecremental pattern; (6) scalp-recorded ictal slow shifts have high speciﬁ  city but low sensitivity; and (7) a DC ampliﬁ er is not necessary to record slow DC shifts; instead, 
+an AC ampliﬁ  er with long time constant could be used.127,133,289
+The subdurally recorded ictal DC shifts are clinically useful in strengthening the conventional ictal EEG ﬁ  ndings and conﬁ  rming the epileptogenic area. In neocortical seizures, 
+even subdural recordings show widely distributed or ill-deﬁ  ned initial ictal change, especially when imaging studies did not reveal a clear focal lesion. In addition, it would be 
+diﬃ  cult to judge the area most attenuated in amplitude from the electrodecremental pattern, which is usually seen as the initial ictal EEG change in neocortical seizures. Ictal DC 
+shifts, in contrast, are so prominent and transient that the areas that show the maximal changes of ictal DC shifts are easily recognized.127
+After the seizure has been viewed using conventional frequencies and muscle activity has been removed, a search for baseline shifts should be performed by opening the high-
+pass ﬁ  lter to at least 0.1 or 0.01 Hz. When intracranial recordings are performed the conventional frequency band, DC shifts and HFOs should be evaluated separately for seizure 
+onset determination. HFOs can be ascertained by setting the high-pass ﬁ  lter at >60 Hz and leaving the low-pass ﬁ  lter open.292

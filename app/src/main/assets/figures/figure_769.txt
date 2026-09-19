@@ -1,0 +1,13 @@
+9
+852 Focal Epilepsy
+FIGURE 9 161. Occipital Lobe Epilepsy; POLG1 Mutation. (Same patient as in Figure 9-160) Seven months after the previous EEG in Figure 9-149. The patient showed 
+deterioration of mental status. Her seizures got worse. She had multiple types of seizures, including GTCS, myoclonic seizures, hemiconvulsion, and occipital lobe seizures 
+described as confusion, visual hallucination, and blindness. Visual hallucinations included simple hallucination, seeing lights and colors, and complex hallucinations, seeing people 
+and ghosts. No auditory hallucinations were noted. Elevation of liver enzymes was noted. Axial FLAIR and coronal T2 WI MRIs show hyperintensity in the right occipital lobe 
+(arrows). EEG demonstrates very frequent and, at times, nearly continuous occipital spikes with some extension to the parieto-temporal regions with right-sided predominance.
+Epilepsy is one of the most common manifestations of POLG1 disease. Epilepsy has an early predilection for the occipital lobes. Thereafter, patients develop simple partial motor 
+seizures and complex partial seizures, myoclonus, and status epilepticus (SE). Repeated seizure activity, especially SE, contributes to worsening mitochondrial function, energy 
+deﬁ  ciency, and fatal outcome.298 A wide variety of occipital symptoms were noted. Almost all patients had occipital seizures. In addition, frontal and generalized epileptic activity 
+occurred in most patients during seizure spread or SE.298
+POLG1 mutations should be considered in teenagers and young adults reporting episodic visual symptoms with migraine-like headaches and sudden-onset intractable 
+seizures. Due to the risk of liver failure, valproic acid should be avoided when treating patients with POLG1 phenotypes.296,299

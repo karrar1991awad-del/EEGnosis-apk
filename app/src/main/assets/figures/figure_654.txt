@@ -1,0 +1,18 @@
+FIGURE 9 46. Parietal Lobe Epilepsy; Focal Cortical Dysplasia. A 15-year-old right-handed girl with medically intractable focal epilepsy due to focal cortical dysplasia (FCD). Her seizure was 
+described as “a tingling sensation in her right foot followed immediately by shaky feeling all over her body and limbs,” which was greater on the right side. Visible clonic limb jerking was noted on 
+both sides, especially on the right side. She also had a nonspeciﬁ  c feeling of fear with palpitations in her chest and urinary urge during the seizure. The seizure lasted for approximately 20–50 sec 
+without loss of consciousness. After some of her seizures, she could not move her right arm for 1–2 minutes. Axial MRI with inversion recovery sequence shows thickening of the cortex and blurring 
+of the gray-white matter junction in the left mesial parietal lobe (arrow). Ictal SPECT shows hyperperfusion in the left superior parietal region adjacent to the lesion seen in the MRI (double arrows). 
+EEG shows frequent and, at times, continuous spikes and polymorphic delta activity in the central vertex with some spreading to both parasagittal regions. The seizure semiology, EEG, MRI, and ictal 
+SPECT are supportive of the diagnosis of left parietal epilepsy caused by FCD.
+Intrinsic epileptogenicity in focal cortical dysplasia (FCD) is caused by abnormal synaptic interconnectivity and neurotransmitter changes within the lesion.70,71 FCD has intrinsic epileptogenicity 
+with unique EEG patterns, including continuous spikes or sharp waves, abrupt runs of high-frequency spikes, rhythmic sharp waves, and periodic spike complexes that occur during sleep.72 The 
+incidences of intrinsic epileptogencity in FCD were 11–20% in diﬀ erent series. Polymorphic delta activity indicative of white matter involvement is commonly seen in FCD.73–75 Trains of continuous or 
+very frequent rhythmic spikes or sharp waves and recurrent electrographic seizures on the scalp EEG were seen in up to 44% of FCD in one series.73
+In all patients with FCD, the seizure onset zone was located within the lesion. Lesional non-SOZ areas might not be directly involved in the seizure origin but might turn into a seizure focus 
+after the removal of primary epileptogenic tissue; therefore, removal of the entire lesion and surrounding interictally active tissue is necessary.76 Removal of the FCD alone does not lead to a good 
+outcome, suggesting a more widespread epileptogenic network.77,78
+Midline spikes are highly epileptogenic. Most patients have diﬀ erent types of clinical seizures, most commonly generalized tonic-clonic or SSMA seizures. Over two-thirds of the patients were 
+neurologically impaired. Most of midline spikes originate from the mesial or paramedian region of the cerebral cortex. They are more common in children than in adults and are markedly activated 
+with sleep. They must be distinguished from normal sleep transients. In the patients with SSMA seizures, routine EEG ﬁ  ndings were usually normal, but prolonged EEGs showed epileptiform 
+discharges over the vertex. Typical seizures are either unilateral or bilateral tonic limb involvement with preserved consciousness.79–81

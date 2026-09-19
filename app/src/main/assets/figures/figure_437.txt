@@ -1,0 +1,4 @@
+FIGURE 65. Electrocerebral Inactivity (ECI); Pulse Artifact. (Same patient as in Figure 6-3 and 6-4) The EEG shows electrocerebral inactivity before the cardiorespiratory 
+support was discontinued. Note rhythmic delta activity, mainly at F3, time-locked with ECG indicating pulse artifact.
+Electrocerebral inactivity is deﬁ  ned as “no cerebral activity over 2 μV when recording from scalp or referential electrode pairs, 10 or more centimeters apart with interelectrode 
+resistances under 10,000 Ω (or impedances under 6000 Ω) but over 100 Ω.”12

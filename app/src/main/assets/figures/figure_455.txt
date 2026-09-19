@@ -1,0 +1,10 @@
+FIGURE 6 23. Periodic Sharp Wave Complexes (PSWCs); Creutzfeldt-Jakob Disease (CJD). A 75-year-old female with subacute progressive dementia and myoclonic jerks 
+who was diagnosed with Creutzfeldt-Jakob disease (CJD) by postmortem examination. EEG shows bilateral synchronous periodic sharp waves occurring every 1.5–2 sec.
+CJD is the most common human transmissible subacute spongiform encephalopathy (TSSE). Most CJD cases are sporadic (85%). The remaining 15% consist of genetic forms 
+(genetic CJD, Gerstmann-Sträussler-Scheinker disease, fatal familial insomnia) and iatrogenic forms (cadaveric human growth hormone and dura mater, surgical or other invasive 
+procedures, and transfusion-associated variant CJD infections). CJD has been reported in children.39,40
+EEG in CJD usually starts with PLEDs41 with atypical short interdischarge intervals of 0.5–2 sec. It usually takes several months to evolve into BiPLEDs or PSWCs. In the terminal 
+stage when myoclonus subsides, EEG shows low-voltage or continuously diﬀ use polymorphic delta activity.42,43
+All patients show PSWCs if serial recordings are performed in diﬀ erent stages of the disease.44 In another series, at the fully developed stage of the disease, 94% of the EEGs 
+showed PSWCs.45 The sensitivity, speciﬁ  city, and positive and negative predictive values of PSWCs were 64%, 91%, 95%, and 49%, respectively. Alzheimer’s disease and vascular 
+dementia were the underlying diseases in the falsely positive cases.46

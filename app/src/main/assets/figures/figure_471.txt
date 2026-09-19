@@ -1,0 +1,7 @@
+FIGURE 6 39. Burst-Suppression Pattern; Pentobarbital Coma. (Continue...) The EEG shows a burst-suppression (B-S) pattern with pentobarbital coma.
+A B-S pattern is a complex wave form alternating with complete attenuated background activity (<10 mV). It is indicative of severe diﬀ use encephalopathy and immediately 
+precedes electrocerebral inactivity. In the absence of a high level of sedative medications, severe metabolic disturbances, and hypothermia, B-S is indicative of an irreversible 
+severe encephalopathy and very poor prognosis. Experimental study of B-S showed that almost all (95%) cortical neurons become electrically silent during the ﬂ  at EEG. 
+Hyperpolarization of cortical neurons due to increased K+ conductance precedes EEG ﬂ  attening, which in turn is secondary to increased GABAergic inhibition at cortical synapses. 
+This inhibition leads to functional disconnection from thalamic input, but 30–40% of thalamic cells continue ﬁ  ring while the cortex is silent. This is due to the intrinsic pacemaking 
+properties of the thalamic neurons at modest levels of hyperpolarization. Volleys from these thalamocortical neurons account for the cyclic EEG wave bursts.77,78

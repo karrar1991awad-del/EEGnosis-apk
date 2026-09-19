@@ -1,0 +1,15 @@
+FIGURE 7 17. Subdural EEG During Asymmetric Epileptic Spasms; High-Frequency Oscillations (HFOs). (Same patient as in Figure 7-11) Subdural EEG recording during a cluster of similar 
+asymmetric epileptic spasms as in Figure 7-16 (arrow head) shows high-voltage delta slow activity with a positive polarity at the PG55 electrode, which is approximately at the same location as the 
+P3 electrode in scalp EEG. What is missing in the scalp EEG recording is a brief run of low-voltage 70- to 80-Hz gamma activity both preceding and superimposed on the delta slowing (open arrow).
+High-frequency oscillations (HFOs), characterized by very fast activity, ranging from 80 to 150 Hz, are noted at the epileptic focus in neocortical epilepsy during subdural EEG recordings.44 Similar 
+gamma activity ranging from 50-100 Hz is also detected on the scalp EEG during epileptic spasms.45 Recent ﬁ  ndings suggest that HFOs ranging between 100 and 500 Hz might be closely linked to 
+epileptogenesis.46
+In humans, physiologic oscillations generally showed a frequency range between 80 and 160 Hz (“ripples”) in hippocampus.47,48 Pathological ripples were also observed.49 The diﬀ erentiation 
+between pathological and physiological events remains unclear.50
+HFOs between 250 and 500 Hz, called fast ripples, have been recorded from normal rodent and human brains.51–53 It was hypothesized that they are related to somatosensory stimulation and 
+sensory information processing.54,55 Fast ripples in mesial temporal structures were more epileptogenic than ripples.56
+Ripples and fast ripples (250–500 Hz) occur frequently during interictal epileptiform discharges (IEDs) and may reﬂ  ect pathological hypersynchronous events. In general, these HFOs are seen 
+more frequently during non-rapid eye movement (NREM) sleep compared to rapid eye movement (REM) sleep or wakefulness.48 Recently, it has been shown that HFOs may also be recorded from 
+intracranial macroelectrodes.57,58 During ictal recordings, HFOs could be identiﬁ  ed and occurred mostly in the region of primary epileptogenesis and less frequently in areas of secondary spread.57
+The recent study showed that HFOs are an important electrophysiological manifestation of the epileptic tissue. They are partially correlated with the spiking region and with the seizure-onset zone 
+(SOZ). Ripples and fast ripples behaved in parallel, increasing in the SOZ and spiking regions, but fast ripples were more speciﬁ  c to the SOZ region than ripples.46

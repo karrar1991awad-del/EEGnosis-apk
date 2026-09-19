@@ -1,0 +1,9 @@
+FIGURE 6 25. Alpha Coma (AC); Hypoxic Encephalopathy During Midazolam Infusion. EEG of a 7-year-old boy with traumatic brain injury (TBI) who was on midazolam 
+infusion for sedation. EEG shows continuously diﬀ use 10- to 12-Hz alpha activity, maximal anteriorly, throughout the whole recording. The EEG shows mild reactivity to external 
+stimuli. The patient returned back to his baseline few days later.
+AC is an EEG pattern in the alpha frequency range (8–13 Hz) that occurs with a generalized distribution in a comatose patient. It is monomorphic and does not change in 
+response to sensory stimuli and is predominant in the frontal region. The AC is most frequently seen in anoxic encephalopathy caused by cardiorespiratory arrest (CRA) 48,49 and 
+associated with a very poor prognosis. AC can also be seen in drug overdose,50 which is very similar to that seen with CRA, except with beta activity superimposed on the alpha 
+activity. Other etiologies include TBI, CJD, pontomesencephalic lesions,51 and encephalitis. The prognosis of AC depends on the underlying causes of coma. Etiology and outcome 
+of AC and other rhythmic coma patterns (beta, theta, and spindle) were similar. One type of rhythmic pattern can change to another. Reactive rhythmic coma was associated with 
+favorable outcome.5,34,52 Prognosis is very poor in anoxic encephalopathy, especially if it develops after 24 hours of coma.53

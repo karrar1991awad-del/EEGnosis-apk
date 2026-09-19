@@ -1,0 +1,6 @@
+FIGURE 66. Paradoxical Activation. EEG of a 20-month-old girl with nonaccidental trauma (NAT). There is a period of background attenuation more severe delta slowing 
+following stimulation. This EEG reactivity is called “paradoxical activation.”
+In severe encephalopathy, the EEG does not show reactivity to any stimulation and is called “invariant EEG.” In milder encephalopathy, the EEG shows spontaneous variability, 
+evidence of EEG reactivity to stimulation, typically attenuation of amplitude, reduction of delta activity, and increase in frequency. Paradoxical activation is a period of more severe 
+delta slowing following painful stimulation. It is seen less commonly than a typical response to stimuli but is associated with a milder degree of encephalopathy compared to the 
+invariant EEG.13

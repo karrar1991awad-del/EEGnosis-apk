@@ -1,0 +1,13 @@
+FIGURE 5 57. Burst-Suppression Pattern; Central Pontine Myelinolysis (CPM). A 2-year-old boy with septo-optic dysplasia with panhypopituitarism who presented to the 
+ED with lethargy, poor feeding, and generalized hypotonia. He developed diabetes insipidus with Na, HCO3, and glucose of 177 MMol/L, 10 MMol/L, and 33 Mg/DL, respectively. 
+He developed generalized hypertonia with intermittent tonic stiﬀ ening. Axial T2-weighted images show hyperintense signal abnormalities in the pons (arrow), cerebellum, (open 
+arrow), midbrain (double arrows), and cerebral white matter (arrow head). The diagnosis of CPM was made. EEG shows a burst-suppression (B-S) pattern.
+CPM and EPM (extrapontine myelinolysis) frequently coexist with other abnormalities, such as electrolyte, and other metabolic disturbances or structural cortical abnormalities. 
+The EEGs (e.g., CPM in liver transplantation) may also show a variety of epileptiform abnormalities or triphasic waves, due to metabolic derangements. Although CPM and EPM do 
+not involve cortical structures, involvement of white matter and subcortical nuclei can produce generalized slowing on the EEG.111,112 B-S has never been reported in CPM. 
+B-S consists of bursts of high-voltage slow waves intermixed with sharp waves, alternating with periods of depressed background activity or complete electrographic 
+suppression. It was ﬁ  rst described in 1949.113 Most experts consider deaﬀ erentation of the cortex from thalamus as the pathogenesis of B-S.114
+At variance with cortical neurons, only 60–70% of thalamic cells ceased ﬁ  ring before overt EEG B-S and was completely silent during ﬂ  at periods of EEG activity. The remaining 
+30– 40% of thalamic cells discharged rhythmic (1–4 Hz) spike bursts during periods of EEG silence. This rhythm, within the frequency range of delta waves, is generated in 
+thalamic cell hyperpolarization.115 B-S and periodic spikes indicate coma with dissolution of cerebral functions down to the midbrain level.116 This theory ﬁ  ts with this patient, 
+whose MRI shows involvement of brainstem at the midbrain and pontine levels.

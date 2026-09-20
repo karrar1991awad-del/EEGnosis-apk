@@ -1,347 +1,84 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>EEGnosis Atlas</title>
-<style>
-*{box-sizing:border-box;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100vh;width:100vw;overflow:hidden;background:#090d16;display:flex;flex-direction:column;color:#e5e7eb}
-.screen{display:none;height:100vh;flex-direction:column}
-.screen.active{display:flex}
-
-/* الشاشة الرئيسية - الأقسام */
-.sections-header{padding:20px;text-align:center;border-bottom:1px solid #1f293d}
-.sections-header h1{font-size:1.4rem;color:#f3f4f6;margin-bottom:6px}
-.sections-header p{font-size:.85rem;color:#6b7280}
-.sections-list{flex:1;overflow-y:auto;padding:12px}
-.section-card{background:#111827;border:1px solid #1f293d;border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
-.section-card.done{border-color:#16a34a;background:#0f2417}
-.section-info{flex:1}
-.section-title{font-size:1rem;font-weight:700;color:#f3f4f6;margin-bottom:6px}
-.section-meta{font-size:.75rem;color:#6b7280}
-.section-action{flex-shrink:0;margin-left:12px}
-.btn{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-weight:600;font-size:.85rem;cursor:pointer;min-width:90px}
-.btn:active{transform:scale(.95)}
-.btn.done{background:#16a34a}
-.btn.delete{background:#dc2626;min-width:auto;padding:10px 12px}
-
-/* شاشة العرض */
-.viewer-header{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:#111827;border-bottom:1px solid #1f293d}
-.back-btn{background:transparent;color:#e5e7eb;border:none;font-size:1.4rem;padding:4px 12px;cursor:pointer}
-.counter{color:#6b7280;font-size:.85rem;background:#1f2937;padding:4px 10px;border-radius:20px}
-.viewer{flex:1;display:flex;align-items:center;justify-content:center;padding:8px}
-.img-frame{width:100%;height:100%;max-width:96%;max-height:96%;background:#000;border-radius:12px;border:1px solid #1f293d;display:flex;align-items:center;justify-content:center;padding:6px}
-#figureImg{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
-.controls{padding:8px 12px;background:#111827;border-top:1px solid #1f293d;display:flex;flex-direction:column;gap:6px}
-.row{display:flex;gap:6px}
-.row button{flex:1;padding:10px 8px;border:none;border-radius:8px;font-weight:600;font-size:.78rem;cursor:pointer;color:#fff}
-.btn-nav{background:#1f2937;border:1px solid #374151}
-.btn-caption{background:#2563eb}
-.btn-markings{background:#8b5cf6}
-.btn-recognized{background:#16a34a}
-.btn-again{background:#d97706}
-
-/* شاشة النص */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;z-index:100;padding:20px;flex-direction:column}
-.overlay.show{display:flex}
-.overlay .inner{background:#0f172a;border:1px solid #2a7de1;border-radius:12px;padding:16px;flex:1;overflow-y:auto;color:#f1f5f9;font-size:.9rem;line-height:1.7;white-space:pre-wrap}
-.overlay .close{margin-top:10px;padding:14px;background:#2563eb;border:none;border-radius:10px;color:#fff;font-weight:700;cursor:pointer}
-
-/* شاشة الإعدادات */
-.settings-header{padding:20px;border-bottom:1px solid #1f293d;display:flex;align-items:center;gap:12px}
-.settings-body{padding:16px;flex:1;overflow-y:auto}
-.setting-item{background:#111827;border:1px solid #1f293d;border-radius:10px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.setting-label{font-size:.9rem;color:#e5e7eb}
-
-/* شريط التقدم */
-.progress-bar{width:100%;height:6px;background:#1f2937;border-radius:3px;margin-top:8px;overflow:hidden}
-.progress-fill{height:100%;background:#2563eb;width:0;transition:width .3s}
-.progress-text{font-size:.75rem;color:#9ca3af;margin-top:4px;text-align:center}
-
-/* Loading */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px}
-.spinner{width:40px;height:40px;border:4px solid #1f293d;border-top-color:#2563eb;border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error{color:#dc2626;font-size:.9rem;text-align:center;padding:20px}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- شاشة التحميل الأولي -->
-<div class="screen active" id="screenLoading">
+<div id="splash">
+  <div class="splash-logo">
+    <svg viewBox="0 0 100 100" fill="none">
+      <path d="M10 50 L25 50 L30 35 L35 65 L40 42 L45 58 L50 30 L55 70 L60 50 L90 50" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+  </div>
+  <div class="splash-title" id="splashTitle"></div>
+  <div class="splash-tagline">MASTER THE WAVES</div>
+</div>
+
+<div id="loadingScreen" style="display:none">
   <div class="loading">
     <div class="spinner"></div>
     <p style="color:#9ca3af">جاري التحميل...</p>
   </div>
 </div>
 
-<!-- شاشة الأقسام -->
-<div class="screen" id="screenSections">
+<div id="sectionsScreen">
   <div class="sections-header">
     <h1>🧠 EEGnosis Atlas</h1>
-    <p id="totalInfo">جاري التحميل...</p>
+    <p id="sectionsInfo">جاري التحميل...</p>
   </div>
   <div class="sections-list" id="sectionsList"></div>
 </div>
 
-<!-- شاشة العرض -->
-<div class="screen" id="screenViewer">
-  <div class="viewer-header">
+<div id="viewerScreen">
+  <div class="topbar" id="topbar">
     <button class="back-btn" onclick="goBack()">←</button>
-    <span id="currentSection" style="font-size:.9rem;color:#9ca3af"></span>
-    <span class="counter" id="counter">- / -</span>
-  </div>
-  <div class="viewer">
-    <div class="img-frame"><img id="figureImg" src="" alt=""></div>
-  </div>
-  <div class="controls">
-    <div class="row">
-      <button class="btn-nav" id="prevBtn" onclick="nav(-1)">⬅ السابق</button>
-      <button class="btn-caption" onclick="toggleCaption()">📖 النص</button>
-      <button class="btn-markings" onclick="toggleMarkings()">🖍️ العلامات</button>
+    <div class="section-chip">
+      <div class="chip-dot" id="chipDot" style="background:#94a3b8"></div>
+      <span id="chipText">All</span>
     </div>
-    <div class="row">
-      <button class="btn-recognized" onclick="nav(1)">✅ تعرفت عليه</button>
-      <button class="btn-again" onclick="nav(1)">🔁 مرة أخرى</button>
-      <button class="btn-nav" id="nextBtn" onclick="nav(1)">التالي ➡</button>
+    <div class="stats">
+      <div class="stat"><div class="stat-dot green"></div><span id="statDone">0</span></div>
+      <div class="stat"><div class="stat-dot orange"></div><span id="statWrong">0</span></div>
+    </div>
+  </div>
+  <div class="progress-track" id="progressTrack"><div class="progress-track-fill" id="progressFill"></div></div>
+  <div class="viewer" id="viewer">
+    <img id="figureImg" src="" alt="">
+    <div class="status-dot" id="statusDot"></div>
+    <div class="flash" id="flash"></div>
+  </div>
+  <div class="controls" id="controls">
+    <div class="tools-row">
+      <button class="tool-btn" id="btnCaption" onclick="toggleCaption()">📖 النص</button>
+      <button class="tool-btn" id="btnMark" onclick="toggleMarkings()">🖍️ العلامات</button>
+      <button class="tool-btn" onclick="confirmReset()">🔄 إعادة</button>
+    </div>
+    <div class="action-row">
+      <button class="btn-nav" id="prevBtn" onclick="nav(-1)">◀</button>
+      <button class="btn-action btn-again" onclick="markAgain()">🔁 مرة أخرى</button>
+      <button class="btn-action btn-rec" onclick="markRecognized()">✅ تعرفت عليه</button>
+      <button class="btn-nav" id="nextBtn" onclick="nav(1)">▶</button>
     </div>
   </div>
 </div>
 
-<!-- شاشة النص -->
-<div class="overlay" id="captionOverlay">
-  <div class="inner" id="captionText">جاري التحميل...</div>
-  <button class="close" onclick="toggleCaption()">إغلاق</button>
+<div class="sheet" id="sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header">
+    <div class="sheet-title">النص التوضيحي</div>
+    <button class="sheet-close" onclick="closeCaption()">✕</button>
+  </div>
+  <div class="sheet-body">
+    <div class="sheet-tag" id="sheetTag"></div>
+    <div class="sheet-headline" id="sheetHeadline"></div>
+    <div class="sheet-details" id="sheetDetails"></div>
+  </div>
 </div>
 
-<script>
-// ============================================================
-//   المتغيرات العامة
-// ============================================================
-const MANIFEST_URL = "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/manifest.json";
-let manifest = null;
-let currentSection = null;
-let currentImages = [];
-let currentIndex = 0;
-
-// ============================================================
-//   تحميل manifest.json
-// ============================================================
-async function loadManifest() {
-  try {
-    const response = await fetch(MANIFEST_URL);
-    manifest = await response.json();
-    console.log("Manifest loaded:", manifest);
-    showSections();
-  } catch (e) {
-    console.error("Manifest load failed:", e);
-    document.getElementById("screenLoading").innerHTML =
-      '<div class="error">فشل الاتصال بالإنترنت.<br>تحقق من اتصالك ثم أعد فتح التطبيق.</div>';
-  }
-}
-
-// ============================================================
-//   عرض الأقسام
-// ============================================================
-function showSections() {
-  switchScreen("screenSections");
-  const list = document.getElementById("sectionsList");
-  list.innerHTML = "";
-
-  const downloaded = JSON.parse(Android.getDownloadedSections());
-  document.getElementById("totalInfo").textContent =
-    `${manifest.total_figures} صورة موزعة على ${manifest.sections.length} أقسام`;
-
-  manifest.sections.forEach(sec => {
-    const isDone = downloaded.includes(sec.id);
-    const card = document.createElement("div");
-    card.className = "section-card" + (isDone ? " done" : "");
-    card.id = "card_" + sec.id;
-    card.innerHTML = `
-      <div class="section-info">
-        <div class="section-title">${sec.name}</div>
-        <div class="section-meta">${sec.count} صورة · ${sec.size_mb} ميجابايت</div>
-        <div class="progress-bar" id="bar_${sec.id}" style="display:none">
-          <div class="progress-fill" id="fill_${sec.id}"></div>
-        </div>
-        <div class="progress-text" id="text_${sec.id}"></div>
-      </div>
-      <div class="section-action" id="action_${sec.id}">
-        ${isDone
-          ? '<button class="btn done" onclick="openSection(\'' + sec.id + '\')">فتح</button>'
-          : '<button class="btn" onclick="downloadSection(\'' + sec.id + '\')">تحميل</button>'}
-      </div>
-    `;
-    list.appendChild(card);
-  });
-}
-
-// ============================================================
-//   تحميل قسم
-// ============================================================
-function downloadSection(sectionId) {
-  const sec = manifest.sections.find(s => s.id === sectionId);
-  if (!sec) return;
-
-  document.getElementById("bar_" + sectionId).style.display = "block";
-  document.getElementById("text_" + sectionId).textContent = "جاري التحميل...";
-  document.getElementById("action_" + sectionId).innerHTML = "";
-
-  Android.downloadSection(sectionId, sec.zip_url);
-}
-
-// ============================================================
-//   استقبال تحديثات التقدم من Java
-// ============================================================
-function updateProgress(sectionId, percent, status) {
-  const bar = document.getElementById("bar_" + sectionId);
-  const fill = document.getElementById("fill_" + sectionId);
-  const text = document.getElementById("text_" + sectionId);
-  const action = document.getElementById("action_" + sectionId);
-
-  if (!bar) return;
-
-  if (status === "downloading") {
-    bar.style.display = "block";
-    fill.style.width = percent + "%";
-    text.textContent = `جاري التحميل... ${percent}%`;
-  } else if (status === "extracting") {
-    fill.style.width = "100%";
-    text.textContent = "جاري فك الضغط...";
-  } else if (status === "done") {
-    text.textContent = "✅ تم التحميل";
-    action.innerHTML = '<button class="btn done" onclick="openSection(\'' + sectionId + '\')">فتح</button>';
-    // تحديث القسم في الواجهة
-    const card = document.getElementById("card_" + sectionId);
-    if (card) card.classList.add("done");
-  } else if (status.startsWith("error")) {
-    text.textContent = "❌ فشل التحميل";
-    text.style.color = "#dc2626";
-    action.innerHTML = '<button class="btn" onclick="downloadSection(\'' + sectionId + '\')">إعادة</button>';
-  }
-}
-
-// ============================================================
-//   فتح قسم (عرض الصور)
-// ============================================================
-function openSection(sectionId) {
-  const sec = manifest.sections.find(s => s.id === sectionId);
-  if (!sec) return;
-
-  currentSection = sec;
-  currentImages = [];
-  for (let i = sec.first; i <= sec.last; i++) {
-    const num = i.toString().padStart(3, "0");
-    currentImages.push({
-      num: i,
-      img: `file://${Android.getFiguresDir()}/figure_${num}.jpg`,
-      txt: `file://${Android.getFiguresDir()}/figure_${num}.txt`
-    });
-  }
-
-  currentIndex = 0;
-  switchScreen("screenViewer");
-  document.getElementById("currentSection").textContent = sec.name;
-  render();
-}
-
-// ============================================================
-//   عرض الصورة
-// ============================================================
-function render() {
-  if (currentImages.length === 0) return;
-  currentIndex = Math.max(0, Math.min(currentIndex, currentImages.length - 1));
-  const item = currentImages[currentIndex];
-  document.getElementById("figureImg").src = item.img;
-  document.getElementById("counter").textContent = (currentIndex + 1) + " / " + currentImages.length;
-  document.getElementById("prevBtn").disabled = currentIndex === 0;
-  document.getElementById("nextBtn").disabled = currentIndex === currentImages.length - 1;
-}
-
-function nav(d) {
-  const n = currentIndex + d;
-  if (n >= 0 && n < currentImages.length) {
-    currentIndex = n;
-    render();
-  }
-}
-
-function goBack() {
-  switchScreen("screenSections");
-  showSections();
-}
-
-// ============================================================
-//   النص (Caption)
-// ============================================================
-async function toggleCaption() {
-  const overlay = document.getElementById("captionOverlay");
-  const text = document.getElementById("captionText");
-
-  if (overlay.classList.contains("show")) {
-    overlay.classList.remove("show");
-    return;
-  }
-
-  const item = currentImages[currentIndex];
-  text.textContent = "جاري التحميل...";
-  overlay.classList.add("show");
-
-  try {
-    const response = await fetch(item.txt);
-    if (response.ok) {
-      const content = await response.text();
-      text.textContent = content || "لا يوجد نص.";
-    } else {
-      text.textContent = "لا يوجد نص.";
-    }
-  } catch (e) {
-    text.textContent = "تعذر تحميل النص.";
-  }
-}
-
-// ============================================================
-//   العلامات (Markings)
-// ============================================================
-function toggleMarkings() {
-  const item = currentImages[currentIndex];
-  const img = document.getElementById("figureImg");
-  const num = item.num.toString().padStart(3, "0");
-  img.src = `file://${Android.getFiguresDir()}/figure_${num}_marked.jpg`;
-}
-
-// ============================================================
-//   التنقل بين الشاشات
-// ============================================================
-function switchScreen(screenId) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  document.getElementById(screenId).classList.add("active");
-}
-
-// ============================================================
-//   Swipe
-// ============================================================
-let touchStartX = 0;
-let touchStartY = 0;
-document.addEventListener("touchstart", e => {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-document.addEventListener("touchend", e => {
-  const dx = e.changedTouches[0].screenX - touchStartX;
-  const dy = e.changedTouches[0].screenY - touchStartY;
-  if (document.getElementById("screenViewer").classList.contains("active")) {
-    if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy)) {
-      nav(dx < 0 ? 1 : -1);
-    }
-  }
-}, { passive: true });
-
-// ============================================================
-//   بدء التطبيق
-// ============================================================
-window.addEventListener("load", loadManifest);
-</script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,347 +1,1257 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>EEGnosis Atlas</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#090d16">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>EEGnosis</title>
 <style>
-*{box-sizing:border-box;font-family:-apple-system,'Segoe UI',Roboto,sans-serif;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100vh;width:100vw;overflow:hidden;background:#090d16;display:flex;flex-direction:column;color:#e5e7eb}
-.screen{display:none;height:100vh;flex-direction:column}
-.screen.active{display:flex}
+:root{
+  --u:1;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --bg-rgb:9 13 22; --bar-rgb:14 19 31; --surface-rgb:23 31 43; --surface-hi-rgb:36 46 64;
+  --surface-press-rgb:51 64 87; --sheet-rgb:19 26 40;
+  --text-rgb:242 245 247; --mid-rgb:219 224 235; --dim-rgb:179 186 199;
+  --green-rgb:22 163 74; --orange-rgb:217 119 6; --accent-rgb:37 99 235;
+  --accent-light-rgb:140 184 255; --neutral-rgb:153 163 179;
+  --bg:rgb(var(--bg-rgb)); --bar:rgb(var(--bar-rgb)); --surface:rgb(var(--surface-rgb));
+  --surface-hi:rgb(var(--surface-hi-rgb)); --surface-press:rgb(var(--surface-press-rgb));
+  --sheet:rgb(var(--sheet-rgb)); --text:rgb(var(--text-rgb)); --mid:rgb(var(--mid-rgb));
+  --dim:rgb(var(--dim-rgb)); --green:rgb(var(--green-rgb)); --orange:rgb(var(--orange-rgb));
+  --accent:rgb(var(--accent-rgb)); --accent-light:rgb(var(--accent-light-rgb));
+  --neutral:rgb(var(--neutral-rgb));
+}
+html[data-theme="light"]{
+  --bg-rgb:241 244 249; --bar-rgb:253 254 255; --surface-rgb:230 233 241; --surface-hi-rgb:217 223 236;
+  --surface-press-rgb:199 209 227; --sheet-rgb:255 255 255;
+  --text-rgb:19 26 41; --mid-rgb:51 61 82; --dim-rgb:97 110 130;
+  --green-rgb:13 140 61; --orange-rgb:204 107 5; --accent-light-rgb:26 82 209; --neutral-rgb:115 128 148;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--text);
+  font-family:var(--font);overscroll-behavior:none;-webkit-text-size-adjust:100%}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.sheet-body{-webkit-user-select:text;user-select:text}
+button{font-family:inherit;color:inherit;border:0;background:none;padding:0;cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px}
+img{-webkit-user-drag:none;user-select:none}
+#app{position:fixed;inset:0;background:var(--bg);
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#column{position:absolute;inset:0;display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+#app{padding:0}
 
-/* الشاشة الرئيسية - الأقسام */
-.sections-header{padding:20px;text-align:center;border-bottom:1px solid #1f293d}
-.sections-header h1{font-size:1.4rem;color:#f3f4f6;margin-bottom:6px}
-.sections-header p{font-size:.85rem;color:#6b7280}
-.sections-list{flex:1;overflow-y:auto;padding:12px}
-.section-card{background:#111827;border:1px solid #1f293d;border-radius:12px;padding:16px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;transition:all .2s}
-.section-card.done{border-color:#16a34a;background:#0f2417}
-.section-info{flex:1}
-.section-title{font-size:1rem;font-weight:700;color:#f3f4f6;margin-bottom:6px}
-.section-meta{font-size:.75rem;color:#6b7280}
-.section-action{flex-shrink:0;margin-left:12px}
-.btn{background:#2563eb;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-weight:600;font-size:.85rem;cursor:pointer;min-width:90px}
-.btn:active{transform:scale(.95)}
-.btn.done{background:#16a34a}
-.btn.delete{background:#dc2626;min-width:auto;padding:10px 12px}
+/* ---------- top bar ---------- */
+#topbar{flex:none;height:calc(52px*var(--u));background:var(--bar);padding:0 calc(12px*var(--u));
+  overflow:hidden;transition:height .18s ease-out,opacity .18s ease-out}
+#topfloat{position:relative;height:100%}
+.chip{position:absolute;left:0;top:50%;transform:translateY(-50%);height:calc(34px*var(--u));
+  display:flex;align-items:center;gap:calc(8px*var(--u));padding:0 calc(14px*var(--u)) 0 calc(12px*var(--u));
+  background:var(--surface-hi);border-radius:calc(17px*var(--u));font-weight:700;font-size:calc(13px*var(--u));white-space:nowrap}
+.dot{flex:none;border-radius:50%;background:var(--neutral)}
+.chip .dot{width:calc(10px*var(--u));height:calc(10px*var(--u))}
+#stats{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;gap:calc(6px*var(--u))}
+.stat{height:calc(28px*var(--u));display:flex;align-items:center;gap:calc(6px*var(--u));
+  padding:0 calc(12px*var(--u)) 0 calc(10px*var(--u));background:var(--surface);border-radius:calc(14px*var(--u));
+  font-size:calc(12px*var(--u));color:var(--mid);white-space:nowrap}
+.stat .dot{width:calc(8px*var(--u));height:calc(8px*var(--u))}
+#pbar{flex:none;height:3px;background:rgb(var(--text-rgb)/.10);overflow:hidden;transition:height .18s ease-out,opacity .18s ease-out}
+#pfill{display:block;height:100%;width:0;background:var(--accent-light);transition:width .25s ease,background .25s}
 
-/* شاشة العرض */
-.viewer-header{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:#111827;border-bottom:1px solid #1f293d}
-.back-btn{background:transparent;color:#e5e7eb;border:none;font-size:1.4rem;padding:4px 12px;cursor:pointer}
-.counter{color:#6b7280;font-size:.85rem;background:#1f2937;padding:4px 10px;border-radius:20px}
-.viewer{flex:1;display:flex;align-items:center;justify-content:center;padding:8px}
-.img-frame{width:100%;height:100%;max-width:96%;max-height:96%;background:#000;border-radius:12px;border:1px solid #1f293d;display:flex;align-items:center;justify-content:center;padding:6px}
-#figureImg{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px}
-.controls{padding:8px 12px;background:#111827;border-top:1px solid #1f293d;display:flex;flex-direction:column;gap:6px}
-.row{display:flex;gap:6px}
-.row button{flex:1;padding:10px 8px;border:none;border-radius:8px;font-weight:600;font-size:.78rem;cursor:pointer;color:#fff}
-.btn-nav{background:#1f2937;border:1px solid #374151}
-.btn-caption{background:#2563eb}
-.btn-markings{background:#8b5cf6}
-.btn-recognized{background:#16a34a}
-.btn-again{background:#d97706}
+/* ---------- tools ---------- */
+#tools{display:flex;gap:calc(6px*var(--u));width:max-content}
+body.land #tools{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.tool{height:calc(34px*var(--u));display:flex;align-items:center;gap:calc(5px*var(--u));
+  padding:0 calc(12px*var(--u)) 0 calc(10px*var(--u));background:var(--surface-hi);
+  border-radius:calc(12px*var(--u));font-weight:700;font-size:calc(13px*var(--u));white-space:nowrap;flex:none}
+.tool:active{background:var(--surface-press)}
+.tool.active{background:rgb(var(--accent-rgb)/.28);color:var(--accent-light)}
+.tool:disabled{opacity:.4;pointer-events:none}
+.tool .g{position:relative;width:calc(18px*var(--u));height:calc(34px*var(--u));flex:none}
+.tool .g svg{position:absolute;left:50%;top:50%;width:calc(26px*var(--u));height:calc(26px*var(--u));transform:translate(-50%,-50%);overflow:visible}
+.tool.compact{padding:0 calc(8px*var(--u));gap:0}
+.tool.compact .lbl{display:none}
+.tool.iconly{padding:0 calc(8px*var(--u));gap:0}
 
-/* شاشة النص */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;z-index:100;padding:20px;flex-direction:column}
-.overlay.show{display:flex}
-.overlay .inner{background:#0f172a;border:1px solid #2a7de1;border-radius:12px;padding:16px;flex:1;overflow-y:auto;color:#f1f5f9;font-size:.9rem;line-height:1.7;white-space:pre-wrap}
-.overlay .close{margin-top:10px;padding:14px;background:#2563eb;border:none;border-radius:10px;color:#fff;font-weight:700;cursor:pointer}
+/* ---------- body / stage ---------- */
+#body{flex:1;min-height:0;display:flex;flex-direction:column}
+body.land #body{flex-direction:row}
+#stage{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;position:relative}
+body.land #stage{flex-direction:row}
+#viewer{position:relative;flex:1;min-width:0;min-height:0;overflow:hidden;touch-action:none;cursor:grab}
+#viewer img{position:absolute;left:0;top:0;transform-origin:50% 50%;pointer-events:none;
+  will-change:transform;max-width:none;display:none}
+#vdot{position:absolute;left:12px;top:12px;width:14px;height:14px;border-radius:50%;display:none}
+#vflash{position:absolute;inset:2px;border:3px solid transparent;pointer-events:none;opacity:0}
+#verr{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--dim);font-size:14px;white-space:pre-line;opacity:0;pointer-events:none;padding:20px}
 
-/* شاشة الإعدادات */
-.settings-header{padding:20px;border-bottom:1px solid #1f293d;display:flex;align-items:center;gap:12px}
-.settings-body{padding:16px;flex:1;overflow-y:auto}
-.setting-item{background:#111827;border:1px solid #1f293d;border-radius:10px;padding:14px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.setting-label{font-size:.9rem;color:#e5e7eb}
+/* ---------- caption sheet ---------- */
+#sheet{--k:1;background:var(--sheet);display:flex;flex-direction:column;min-height:0;min-width:0;
+  border-radius:18px 18px 0 0;overflow:hidden;flex:none}
+body:not(.land) #sheet{height:calc(var(--frac,.1)*100%);width:100%}
+body.land #sheet{width:calc(var(--frac,.1)*100%);height:100%;border-radius:18px 0 0 18px}
+.sheet-head{flex:none;height:calc(40px*var(--u));display:flex}
+.sheet-head .lp{flex:none;width:calc(40px*var(--u))}
+.handle-zone{flex:1;display:flex;align-items:center;justify-content:center;touch-action:none;cursor:grab}
+.handle-zone i{width:44px;height:4px;border-radius:2px;background:rgb(var(--text-rgb)/.28)}
+.iconbtn{position:relative;flex:none;display:block}
+.iconbtn svg{position:absolute;left:50%;top:50%;width:calc(28px*var(--u));height:calc(28px*var(--u));
+  transform:translate(-50%,-50%);overflow:visible}
+.iconbtn::before{content:"";position:absolute;inset:0;margin:auto;width:78%;height:78%;border-radius:50%;background:rgb(var(--text-rgb)/.12);opacity:0}
+.iconbtn:active::before{opacity:1}
+.iconbtn:disabled{color:rgb(128 135 148/.35);pointer-events:none}
+#closeCap{width:calc(40px*var(--u));height:100%}
+.sheet-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+  padding:2px calc(18px*var(--k)) 24px;display:flex;flex-direction:column;gap:calc(12px*var(--k))}
+.c-tag{font-size:calc(13px*var(--k));font-weight:700;color:var(--dim)}
+.c-head{font-size:calc(20px*var(--k));font-weight:700;color:var(--text)}
+.c-detail{font-size:calc(17px*var(--k));color:var(--mid);line-height:1.25;white-space:pre-wrap}
+.c-tag:empty,.c-detail:empty{display:none}
 
-/* شريط التقدم */
-.progress-bar{width:100%;height:6px;background:#1f2937;border-radius:3px;margin-top:8px;overflow:hidden}
-.progress-fill{height:100%;background:#2563eb;width:0;transition:width .3s}
-.progress-text{font-size:.75rem;color:#9ca3af;margin-top:4px;text-align:center}
+/* ---------- controls ---------- */
+#controls{flex:none;background:var(--bar);display:flex;flex-direction:column;overflow:hidden;
+  transition:height .18s ease-out,width .18s ease-out,opacity .18s ease-out,padding .18s ease-out}
+body:not(.land) #controls{height:calc(94px*var(--u));padding:calc(6px*var(--u)) calc(10px*var(--u));gap:calc(6px*var(--u))}
+body.land #controls{width:calc(116px*var(--u));padding:calc(8px*var(--u)) calc(10px*var(--u));justify-content:center}
+#toolsRow{display:flex;justify-content:center;height:calc(34px*var(--u));flex:none}
+body.land #toolsRow{display:none}
+#actions{display:grid;gap:calc(10px*var(--u))}
+body:not(.land) #actions{grid-template-columns:calc(42px*var(--u)) 1fr 1fr calc(42px*var(--u));
+  grid-template-areas:"prev again rec next";height:calc(42px*var(--u))}
+body.land #actions{grid-template-columns:1fr 1fr;grid-template-areas:"rec rec" "again again" "prev next";
+  grid-auto-rows:calc(42px*var(--u));column-gap:calc(8px*var(--u))}
+#btnPrev{grid-area:prev}#btnNext{grid-area:next}#btnAgain{grid-area:again}#btnRec{grid-area:rec}
+#actions .iconbtn{height:100%}
+body.focus #topbar,body.focus #pbar{height:0;opacity:0}
+body.focus:not(.land) #controls{height:0;opacity:0;padding-top:0;padding-bottom:0}
+body.focus.land #controls{width:0;opacity:0;padding-left:0;padding-right:0}
 
-/* Loading */
-.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px}
-.spinner{width:40px;height:40px;border:4px solid #1f293d;border-top-color:#2563eb;border-radius:50%;animation:spin 1s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.error{color:#dc2626;font-size:.9rem;text-align:center;padding:20px}
+/* ---------- pill buttons ---------- */
+.t-orange{--r:217;--g:119;--b:6}
+html[data-theme="light"] .t-orange{--r:204;--g:107;--b:5}
+.t-green{--r:22;--g:163;--b:74}
+html[data-theme="light"] .t-green{--r:13;--g:140;--b:61}
+.t-accent{--r:37;--g:99;--b:235}
+.t-neutral{--r:140;--g:153;--b:173}
+.pill{display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;
+  font-size:calc(15px*var(--u));color:#fff;border-radius:calc(16px*var(--u));
+  background:rgb(var(--r) var(--g) var(--b));min-width:0}
+.pill:active{background:rgb(calc(var(--r)*.75) calc(var(--g)*.75) calc(var(--b)*.75))}
+.pill.tint{border-radius:calc(12px*var(--u));background:rgb(var(--r) var(--g) var(--b)/.16);
+  box-shadow:inset 0 0 0 1.2px rgb(var(--r) var(--g) var(--b)/.85);
+  color:rgb(calc(var(--r)*.45 + 140) calc(var(--g)*.45 + 140) calc(var(--b)*.45 + 140))}
+html[data-theme="light"] .pill.tint{color:rgb(calc(var(--r)*.62) calc(var(--g)*.62) calc(var(--b)*.62))}
+.pill.tint:active{background:rgb(var(--r) var(--g) var(--b)/.34)}
+.pill:disabled{opacity:.4;pointer-events:none}
+
+/* ---------- overlays ---------- */
+.overlay{position:absolute;inset:0;background:var(--bg);touch-action:manipulation}
+.splash{z-index:30;transition:opacity .45s ease-in-out}
+.splash.out{opacity:0;pointer-events:none}
+.splash .card{position:absolute;left:0;right:0;top:47%;transform:translateY(-50%);
+  display:flex;flex-direction:column;align-items:center}
+.logo{display:block;flex:none}
+.logo-fade{opacity:0;transition:opacity .8s ease-out}
+.logo-fade.on{opacity:1}
+.ltrs{display:flex;justify-content:center;white-space:pre}
+.ltr{opacity:0;transition:opacity .45s ease-out}
+.ltr.on{opacity:1}
+.welcome{z-index:20;transition:opacity .35s ease-in-out}
+.welcome.out{opacity:0;pointer-events:none}
+.welcome canvas.wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.w-scroll{position:absolute;inset:0;overflow-y:auto;display:flex;padding:calc(20px*var(--u)) 0;-webkit-overflow-scrolling:touch}
+.w-main{margin:auto;display:flex;flex-direction:column;gap:calc(22px*var(--u));flex:none}
+.w-main.two{flex-direction:row;align-items:center}
+.w-main.two>*{flex:1 1 0;min-width:0}
+.blk{display:flex;flex-direction:column}
+.fadein{opacity:0;animation:fadeIn .5s ease-out forwards}
+@keyframes fadeIn{to{opacity:1}}
+.w-title{text-align:center;font-weight:700;color:var(--text);white-space:pre-line;line-height:1.2}
+.w-sub{text-align:center;color:var(--dim);line-height:1.25}
+.pcard{display:flex;align-items:center;gap:calc(16px*var(--u));height:calc(116px*var(--u));padding:calc(14px*var(--u));
+  background:var(--surface);border-radius:calc(18px*var(--u))}
+.ring{position:relative;flex:none;width:calc(88px*var(--u));height:calc(88px*var(--u))}
+.ring svg{width:100%;height:100%;display:block}
+.ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:calc(20px*var(--u))}
+.pinfo{display:flex;flex-direction:column;gap:calc(2px*var(--u));min-width:0}
+.pinfo .l1{font-weight:700;font-size:calc(15px*var(--u))}
+.pinfo .l2{font-size:calc(13px*var(--u));color:var(--mid)}
+.pinfo .l3{font-size:calc(13px*var(--u));color:var(--accent-light)}
+.pinfo .l3.on{font-weight:700}
+.tcard{text-align:left;display:block;width:100%;padding:calc(16px*var(--u));background:var(--surface);
+  border-radius:calc(18px*var(--u));margin-top:calc(14px*var(--u))}
+.tcard .k{font-size:calc(11px*var(--u));font-weight:700;color:var(--accent-light);margin-bottom:calc(6px*var(--u))}
+.tcard .t{font-size:calc(15px*var(--u));color:var(--mid);line-height:1.25;transition:opacity .3s}
+.startbtn{width:100%;height:calc(56px*var(--u));font-size:calc(17px*var(--u))}
+.wrow{display:flex;justify-content:center;gap:calc(8px*var(--u));margin-top:calc(14px*var(--u))}
+
+/* ---------- modals ---------- */
+#modalHost{position:absolute;inset:0;z-index:40;pointer-events:none}
+.modal-ov{position:absolute;inset:0;background:rgb(0 0 0/.7);display:flex;align-items:center;justify-content:center;
+  pointer-events:auto;opacity:0;transition:opacity .15s}
+.modal-ov.in{opacity:1}
+.modal-box{background:var(--sheet);border-radius:calc(18px*var(--u));max-height:90%;display:flex;flex-direction:column;
+  padding:calc(18px*var(--u));gap:calc(10px*var(--u));overflow:hidden}
+.m-title{font-weight:700;font-size:calc(19px*var(--u));text-align:center}
+.m-title.left{text-align:left;min-height:calc(30px*var(--u));display:flex;align-items:center}
+.m-msg{color:var(--mid);text-align:center;font-size:calc(15px*var(--u));line-height:1.3}
+.m-scroll{overflow-y:auto;display:flex;flex-direction:column;gap:calc(10px*var(--u));min-height:0;padding:calc(4px*var(--u)) 0 calc(6px*var(--u))}
+.m-cap{font-size:calc(12px*var(--u));font-weight:700;color:var(--dim)}
+.m-seg{display:flex;gap:calc(8px*var(--u));height:calc(44px*var(--u));flex:none}
+.m-seg .pill{flex:1;font-size:calc(14px*var(--u))}
+.m-btn{height:calc(44px*var(--u));font-size:calc(14px*var(--u));flex:none}
+.m-row{display:flex;gap:calc(12px*var(--u));height:calc(44px*var(--u));flex:none}
+.m-row .pill{flex:1;font-size:calc(14px*var(--u))}
+.m-mail{text-align:center;font-weight:700;font-size:calc(15px*var(--u));color:var(--accent-light);word-break:break-all}
+.m-status{text-align:center;font-size:calc(12px*var(--u));color:var(--dim);min-height:calc(20px*var(--u))}
+.m-about{display:flex;flex-direction:column;align-items:center;gap:calc(8px*var(--u))}
+.m-about .nm{font-weight:700;font-size:calc(24px*var(--u))}
+.m-about .tg{font-size:calc(15px*var(--u));color:var(--accent-light)}
+.m-about .ds{font-size:calc(14px*var(--u));color:var(--mid);text-align:center;line-height:1.3}
+.m-about .vr{font-size:calc(12px*var(--u));color:var(--dim)}
+.srow{display:flex;align-items:center;gap:calc(10px*var(--u));height:calc(52px*var(--u));padding:0 calc(14px*var(--u));
+  background:var(--surface);border-radius:calc(12px*var(--u));flex:none;text-align:left;width:100%}
+.srow.act{background:var(--surface-hi)}
+.srow .dot{width:calc(10px*var(--u));height:calc(10px*var(--u))}
+.srow .nm{flex:1;font-size:calc(14px*var(--u));min-width:0}
+.srow.act .nm{font-weight:700}
+.srow .ct{flex:none;width:calc(84px*var(--u));text-align:right;font-size:calc(12px*var(--u));color:var(--dim)}
+.toast{position:absolute;left:50%;bottom:calc(24px*var(--u));transform:translateX(-50%);z-index:50;
+  background:var(--surface-hi);color:var(--text);padding:10px 16px;border-radius:12px;font-size:13px;max-width:90%;text-align:center}
+@media (prefers-reduced-motion:reduce){
+  .fadein{animation-duration:.01s}
+  .logo-fade,.ltr,#pfill{transition:none}
+}
 </style>
 </head>
 <body>
-
-<!-- شاشة التحميل الأولي -->
-<div class="screen active" id="screenLoading">
-  <div class="loading">
-    <div class="spinner"></div>
-    <p style="color:#9ca3af">جاري التحميل...</p>
-  </div>
-</div>
-
-<!-- شاشة الأقسام -->
-<div class="screen" id="screenSections">
-  <div class="sections-header">
-    <h1>🧠 EEGnosis Atlas</h1>
-    <p id="totalInfo">جاري التحميل...</p>
-  </div>
-  <div class="sections-list" id="sectionsList"></div>
-</div>
-
-<!-- شاشة العرض -->
-<div class="screen" id="screenViewer">
-  <div class="viewer-header">
-    <button class="back-btn" onclick="goBack()">←</button>
-    <span id="currentSection" style="font-size:.9rem;color:#9ca3af"></span>
-    <span class="counter" id="counter">- / -</span>
-  </div>
-  <div class="viewer">
-    <div class="img-frame"><img id="figureImg" src="" alt=""></div>
-  </div>
-  <div class="controls">
-    <div class="row">
-      <button class="btn-nav" id="prevBtn" onclick="nav(-1)">⬅ السابق</button>
-      <button class="btn-caption" onclick="toggleCaption()">📖 النص</button>
-      <button class="btn-markings" onclick="toggleMarkings()">🖍️ العلامات</button>
-    </div>
-    <div class="row">
-      <button class="btn-recognized" onclick="nav(1)">✅ تعرفت عليه</button>
-      <button class="btn-again" onclick="nav(1)">🔁 مرة أخرى</button>
-      <button class="btn-nav" id="nextBtn" onclick="nav(1)">التالي ➡</button>
+<noscript>This app needs JavaScript.</noscript>
+<div id="app">
+  <div id="column">
+    <header id="topbar"><div id="topfloat">
+      <button id="chip" class="chip" type="button"><span class="dot" id="chipDot"></span><span id="chipLbl">All sections</span></button>
+      <div id="stats">
+        <div class="stat"><span class="dot" style="background:var(--green)"></span><span id="statDone">0 answered</span></div>
+        <div class="stat"><span class="dot" style="background:var(--orange)"></span><span id="statWrong">0 wrong</span></div>
+      </div>
+    </div></header>
+    <div id="pbar"><i id="pfill"></i></div>
+    <div id="body">
+      <div id="stage">
+        <div id="viewer">
+          <img id="vimg" alt="" draggable="false">
+          <span id="vdot"></span><div id="vflash"></div><div id="verr"></div>
+        </div>
+      </div>
+      <aside id="controls">
+        <div id="toolsRow"></div>
+        <div id="actions"></div>
+      </aside>
     </div>
   </div>
-</div>
-
-<!-- شاشة النص -->
-<div class="overlay" id="captionOverlay">
-  <div class="inner" id="captionText">جاري التحميل...</div>
-  <button class="close" onclick="toggleCaption()">إغلاق</button>
+  <div id="modalHost"></div>
 </div>
 
 <script>
-// ============================================================
-//   المتغيرات العامة
-// ============================================================
-const MANIFEST_URL = "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/manifest.json";
-let manifest = null;
-let currentSection = null;
-let currentImages = [];
-let currentIndex = 0;
+'use strict';
+/* ==========================================================
+   الإعدادات — غيّر هنا فقط
+   ========================================================== */
+const CONFIG = {
+  APP_NAME: "EEGnosis",
+  TAGLINE: "Master The Waves",
+  APP_VERSION: "1.0",
 
-// ============================================================
-//   تحميل manifest.json
-// ============================================================
-async function loadManifest() {
-  try {
-    const response = await fetch(MANIFEST_URL);
-    manifest = await response.json();
-    console.log("Manifest loaded:", manifest);
-    showSections();
-  } catch (e) {
-    console.error("Manifest load failed:", e);
-    document.getElementById("screenLoading").innerHTML =
-      '<div class="error">فشل الاتصال بالإنترنت.<br>تحقق من اتصالك ثم أعد فتح التطبيق.</div>';
+  // ✏️ زر Contact us يستخدم هذي القيم
+  CONTACT_EMAIL: "your-email@example.com",
+  CONTACT_WEBSITE: "",            // اتركه فاضي لو ما عندك موقع
+
+  START_INDEX: 3,                 // أول صورة  (figure_003)
+  END_INDEX: 768,                 // آخر صورة  (زِدها لما تضيف صور جديدة)
+
+  // مجلد الملفات النصية و sections.json (داخل المستودع نفسه)
+  ASSETS_DIR: "assets/",
+
+  // مكان الصور. لو تركتها فاضية تنقرأ الصور من ASSETS_DIR.
+  // لو رفعت الصور على GitHub Release ضع الروابط هنا (تقدر تستخدم أكثر من Release،
+  // لأن الـ Release الواحد أقصاه 1000 ملف):
+  //   { from: 3,   to: 400, base: "https://github.com/USER/REPO/releases/download/v1/" },
+  //   { from: 401, to: 768, base: "https://github.com/USER/REPO/releases/download/v2/" },
+  IMAGE_RELEASES: [],
+};
+
+const TIPS = [
+  "The posterior dominant rhythm (alpha) is 8\u201313 Hz and attenuates when the eyes open.",
+  "Sleep spindles are 11\u201316 Hz bursts, maximal centrally, and mark stage N2 sleep.",
+  "K-complexes and sleep spindles together are the hallmark of stage N2 sleep.",
+  "Mu rhythm is an arch-shaped 8\u201313 Hz rhythm over the central regions that blocks with movement.",
+  "Lambda waves are positive occipital sharp transients seen while scanning with eyes open.",
+  "Wicket spikes are arch-like 6\u201311 Hz temporal bursts \u2014 a benign variant, not epileptiform.",
+  "Eye blinks appear as symmetric frontopolar deflections \u2014 the most common artifact you will meet.",
+  "Excess frontocentral beta activity is a typical effect of benzodiazepines and barbiturates.",
+  "Triphasic waves are frontally predominant with an anterior-to-posterior lag, often seen in metabolic encephalopathy.",
+  "Generalized 3 Hz spike-and-wave is the classic pattern of childhood absence epilepsy.",
+  "Hypsarrhythmia \u2014 chaotic, high-voltage, multifocal spikes \u2014 is typical of infantile spasms.",
+  "Burst-suppression alternates bursts of activity with marked attenuation: think deep anesthesia or severe encephalopathy.",
+  "Lateralized periodic discharges usually point to an acute focal cerebral process.",
+  "Before calling anything abnormal, ask: is it cerebral? Rule out artifact, check the field and the reactivity.",
+];
+
+const SECTIONS = [
+  ["ALL", "All Sections"],
+  ["Normal and Benign Variants", "1. Normal & Benign"],
+  ["Artifacts", "2. Artifacts"],
+  ["Newborn", "3. Newborn"],
+  ["Focal Nonepileptiform Activity", "4. Focal Nonepileptiform"],
+  ["Generalized Nonepileptiform Activity", "5. Generalized Nonepileptiform"],
+  ["ICU", "6. ICU"],
+  ["Epileptic Encephalopathy", "7. Epileptic Encephalopathy"],
+  ["Generalized Epilepsy", "8. Generalized Epilepsy"],
+  ["Focal Epilepsy", "9. Focal Epilepsy"],
+];
+const SHORT = {
+  "ALL": "All sections", "Normal and Benign Variants": "Normal & Benign", "Artifacts": "Artifacts",
+  "Newborn": "Newborn", "Focal Nonepileptiform Activity": "Focal Non-epi",
+  "Generalized Nonepileptiform Activity": "Gen. Non-epi", "ICU": "ICU",
+  "Epileptic Encephalopathy": "Encephalopathy", "Generalized Epilepsy": "Gen. Epilepsy",
+  "Focal Epilepsy": "Focal Epilepsy", "General": "General",
+};
+const SECTION_COLORS = {
+  "Normal and Benign Variants": [89, 173, 217], "Artifacts": [166, 148, 224], "Newborn": [230, 148, 184],
+  "Focal Nonepileptiform Activity": [77, 184, 173], "Generalized Nonepileptiform Activity": [115, 133, 230],
+  "ICU": [230, 199, 89], "Epileptic Encephalopathy": [230, 128, 115],
+  "Generalized Epilepsy": [140, 204, 140], "Focal Epilepsy": [204, 166, 128],
+};
+const sectionColor = c => SECTION_COLORS[c] ? `rgb(${SECTION_COLORS[c].join(" ")})` : "var(--neutral)";
+const CAPTION_SCALES = { small: 0.85, medium: 1.0, large: 1.3 };
+const THEME_BG = { dark: "#090d16", light: "#f1f4f9" };
+
+/* ==========================================================
+   أدوات عامة
+   ========================================================== */
+const $ = (s, r = document) => r.querySelector(s);
+const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+const pad3 = n => String(n).padStart(3, "0");
+const later = (fn, ms = 50) => setTimeout(fn, ms);
+
+function el(tag, attrs, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v === false || v == null) continue;
+    if (k === "class") e.className = v;
+    else if (k === "style") e.style.cssText = v;
+    else if (k === "html") e.innerHTML = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null) e.append(c.nodeType ? c : document.createTextNode(c));
+  return e;
+}
+
+const easeOutQuad = t => t * (2 - t);
+const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+const easeInOut = t => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
+
+function animate(obj, props, d, ease, done, upd) {
+  const keys = Object.keys(props), from = {}, token = {};
+  obj.__tw = obj.__tw || {};
+  keys.forEach(k => { from[k] = obj[k]; obj.__tw[k] = token; });
+  const t0 = performance.now();
+  (function step(now) {
+    if (!keys.some(k => obj.__tw[k] === token)) return;
+    const p = Math.min(1, (now - t0) / (d * 1000)), e = (ease || easeOutQuad)(p);
+    keys.forEach(k => { if (obj.__tw[k] === token) obj[k] = from[k] + (props[k] - from[k]) * e; });
+    if (upd) upd();
+    if (p < 1) requestAnimationFrame(step);
+    else { keys.forEach(k => { if (obj.__tw[k] === token) obj.__tw[k] = null; }); if (done) done(); }
+  })(t0);
+}
+function cancelAnim(obj, ...keys) { if (obj.__tw) keys.forEach(k => { obj.__tw[k] = null; }); }
+
+/* ---------- تخزين ---------- */
+const LS = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) { console.warn("save failed", e); } },
+};
+const SETTINGS = Object.assign({ theme: "dark", caption_size: "medium", streak: 0, last_day: "" }, LS.get("eegnosis.settings") || {});
+if (!["dark", "light"].includes(SETTINGS.theme)) SETTINGS.theme = "dark";
+if (!(SETTINGS.caption_size in CAPTION_SCALES)) SETTINGS.caption_size = "medium";
+const saveSettings = () => LS.set("eegnosis.settings", SETTINGS);
+const captionScale = () => CAPTION_SCALES[SETTINGS.caption_size] || 1;
+
+function todayISO() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+function dayNum(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+  return m ? Math.round(Date.UTC(+m[1], +m[2] - 1, +m[3]) / 86400000) : null;
+}
+function streakNow() {
+  const last = dayNum(SETTINGS.last_day);
+  if (last === null) return 0;
+  return dayNum(todayISO()) - last <= 1 ? (SETTINGS.streak | 0) : 0;
+}
+function bumpStreak() {
+  const today = dayNum(todayISO()), last = dayNum(SETTINGS.last_day);
+  if (last === today) return;
+  SETTINGS.streak = last !== null && today - last === 1 ? (SETTINGS.streak | 0) + 1 : 1;
+  SETTINGS.last_day = todayISO();
+  saveSettings();
+}
+
+/* ---------- تنظيف النصوص (نفس منطق البايثون) ---------- */
+const CHAR_MAP = {
+  "\ufb00": "ff", "\ufb01": "fi", "\ufb02": "fl", "\ufb03": "ffi", "\ufb04": "ffl",
+  "\u2010": "-", "\u2011": "-", "\u2012": "-", "\u00ad": "", "\u200b": "",
+  "\u00a0": " ", "\u2009": " ", "\u202f": " ", "\u2212": "-",
+};
+const FIG_RE = /^\s*fig(?:ure)?\.?\s*[\d\s\-\u2013\u2014.,]*$/i;
+const LIST_RE = /^(?:[A-Za-z]\.|\d+[.)]|[-\u2022*])\s/;
+const isLower = c => !!c && c === c.toLowerCase() && c !== c.toUpperCase();
+
+function cleanText(s) { for (const [a, b] of Object.entries(CHAR_MAP)) s = s.split(a).join(b); return s; }
+
+function reflow(text) {
+  const paras = text.trim().split(/\n\s*\n/), out = [];
+  for (const p of paras) {
+    const lines = p.split(/\r?\n/).map(l => l.trim()).filter(Boolean), merged = [];
+    for (const ln of lines) {
+      if (merged.length && !LIST_RE.test(ln)) merged[merged.length - 1] += " " + ln;
+      else merged.push(ln);
+    }
+    const para = merged.join("\n");
+    if (out.length && para && isLower(para[0]) && ![".", "!", "?", ":", ";", ")"].some(e => out[out.length - 1].trimEnd().endsWith(e)))
+      out[out.length - 1] += " " + para;
+    else out.push(para);
+  }
+  return out.filter(Boolean).join("\n\n");
+}
+
+function splitCaption(text) {
+  text = cleanText((text || "").replace(/\r/g, "")).trim();
+  if (!text) return ["", "", ""];
+  const lines = text.split("\n");
+  while (lines.length && !lines[0].trim()) lines.shift();
+  let tag = "";
+  if (lines.length && FIG_RE.test(lines[0])) {
+    tag = lines.shift().trim();
+    while (lines.length && !lines[0].trim()) lines.shift();
+  }
+  if (!lines.length) return ["", tag, ""];
+  const first = lines[0].trim(), rest = lines.slice(1).join("\n").trim();
+  let head = first, extra = "";
+  const i = first.indexOf(". ");
+  if (i > 0 && i < 160 && first.length > i + 2) { head = first.slice(0, i + 1); extra = first.slice(i + 2).trim(); }
+  return [tag, head, reflow(extra + (rest ? "\n" + rest : ""))];
+}
+
+/* ---------- أيقونات (SVG) ---------- */
+function glyph(kind, h = 7) {
+  const P = (x, y) => `${(12 + x).toFixed(2)},${(12 - y).toFixed(2)}`;
+  const poly = pts => `<polyline points="${pts.map(p => P(p[0], p[1])).join(" ")}"/>`;
+  let s = "";
+  if (kind === "prev") s = `<polygon fill="currentColor" stroke="none" points="${P(-h, 0)} ${P(.8 * h, h)} ${P(.8 * h, -h)}"/>`;
+  else if (kind === "next") s = `<polygon fill="currentColor" stroke="none" points="${P(h, 0)} ${P(-.8 * h, h)} ${P(-.8 * h, -h)}"/>`;
+  else if (kind === "caption") {
+    s = `<rect x="${12 - 1.1 * h}" y="${12 - .95 * h}" width="${2.2 * h}" height="${1.9 * h}" rx="2.6"/>`
+      + poly([[-.6 * h, .4 * h], [.6 * h, .4 * h]]) + poly([[-.6 * h, 0], [.6 * h, 0]]) + poly([[-.6 * h, -.4 * h], [.1 * h, -.4 * h]]);
+  } else if (kind === "mark") {
+    h = 6;
+    s = `<circle cx="12" cy="12" r="${h}"/><circle cx="12" cy="12" r="${.28 * h}" fill="currentColor" stroke="none"/>`
+      + poly([[0, 1.3 * h], [0, .65 * h]]) + poly([[0, -1.3 * h], [0, -.65 * h]])
+      + poly([[-1.3 * h, 0], [-.65 * h, 0]]) + poly([[1.3 * h, 0], [.65 * h, 0]]);
+  } else if (kind === "reset") {
+    h = 6.5;
+    const r = h * 1.05, t0 = 0.9, t1 = 5.7, n = 28, pts = [];
+    for (let i = 0; i <= n; i++) { const t = t0 + (t1 - t0) * i / n; pts.push([r * Math.cos(t), r * Math.sin(t)]); }
+    const ex = r * Math.cos(t1), ey = r * Math.sin(t1), dx = -Math.sin(t1), dy = Math.cos(t1), nx = Math.cos(t1), ny = Math.sin(t1), a = h * .7;
+    s = poly(pts) + `<polygon fill="currentColor" stroke="none" points="${P(ex + dx * a, ey + dy * a)} ${P(ex - dx * a * .2 + nx * a * .65, ey - dy * a * .2 + ny * a * .65)} ${P(ex - dx * a * .2 - nx * a * .65, ey - dy * a * .2 - ny * a * .65)}"/>`;
+  } else if (kind === "gear") {
+    h = 6.6;
+    s = `<circle cx="12" cy="12" r="${.5 * h}"/><circle cx="12" cy="12" r="${.85 * h}"/>`;
+    for (let k = 0; k < 8; k++) {
+      const a = k * Math.PI / 4;
+      s += `<polyline stroke-width="2.4" points="${P(.85 * h * Math.cos(a), .85 * h * Math.sin(a))} ${P(1.2 * h * Math.cos(a), 1.2 * h * Math.sin(a))}"/>`;
+    }
+  } else if (kind === "mail") {
+    h = 6.5;
+    s = `<rect x="${12 - 1.15 * h}" y="${12 - .8 * h}" width="${2.3 * h}" height="${1.6 * h}" rx="1.8"/>`
+      + poly([[-1.15 * h, .8 * h], [0, -.1 * h], [1.15 * h, .8 * h]]);
+  } else if (kind === "info") {
+    h = 6.6;
+    s = `<circle cx="12" cy="12" r="${1.05 * h}"/><circle cx="12" cy="${12 - .56 * h}" r="${.14 * h}" fill="currentColor" stroke="none"/>`
+      + `<polyline stroke-width="2" points="${P(0, .2 * h)} ${P(0, -.55 * h)}"/>`;
+  } else if (kind === "close") {
+    s = poly([[-.8 * h, -.8 * h], [.8 * h, .8 * h]]) + poly([[-.8 * h, .8 * h], [.8 * h, -.8 * h]]);
+  }
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${s}</svg>`;
+}
+
+/* ---------- شعار البرنامج ---------- */
+let ICON_URL = null;
+function probeIcon() {
+  const cands = ["icon.png", CONFIG.ASSETS_DIR + "icon.png", "logo.png", CONFIG.ASSETS_DIR + "logo.png"];
+  return new Promise(resolve => {
+    let i = 0;
+    const next = () => {
+      if (i >= cands.length) return resolve();
+      const im = new Image(), u = cands[i++];
+      im.onload = () => { ICON_URL = u; resolve(); };
+      im.onerror = next;
+      im.src = u;
+    };
+    next();
+    setTimeout(resolve, 600);
+  });
+}
+function logoWave(off, amp, phase, spikeAt, spikeAmp) {
+  const n = 90, pts = [];
+  for (let i = 0; i <= n; i++) {
+    const t = i / n, env = Math.pow(Math.abs(Math.sin(Math.PI * t)), 0.7);
+    const base = 0.55 * Math.sin(2 * Math.PI * 2.2 * t + phase) + 0.30 * Math.sin(2 * Math.PI * 5.1 * t + 1.3 * phase);
+    const spike = spikeAmp * Math.exp(-Math.pow((t - spikeAt) / 0.035, 2));
+    const x = 100 * (0.12 + 0.76 * t), y = 100 * (0.5 + off) + 100 * amp * (base * env + spike);
+    pts.push(`${x.toFixed(2)},${(100 - y).toFixed(2)}`);
+  }
+  return pts.join(" ");
+}
+function makeLogo(size) {
+  const box = el("div", { class: "logo", style: `width:${size}px;height:${size}px` });
+  if (ICON_URL) { box.append(el("img", { src: ICON_URL, alt: "", style: "width:100%;height:100%;object-fit:contain" })); return box; }
+  const w = (off, amp, ph, sa, sp, col, wd) =>
+    `<polyline fill="none" stroke="${col}" stroke-width="${wd}" stroke-linecap="round" stroke-linejoin="round" points="${logoWave(off, amp, ph, sa, sp)}"/>`;
+  box.innerHTML = `<svg viewBox="0 0 100 100" width="100%" height="100%" aria-hidden="true">
+    <rect x=".8" y=".8" width="98.4" height="98.4" rx="24" fill="rgb(19 28 48)" stroke="rgb(51 115 242/.6)" stroke-width="1.6"/>
+    <ellipse cx="50" cy="50" rx="40" ry="40" fill="rgb(51 115 242/.10)"/>
+    ${w(.22, .06, 1.0, .72, .9, "rgb(89 153 242/.35)", 1.6)}
+    ${w(-.22, .06, 2.1, .30, .9, "rgb(89 153 242/.35)", 1.6)}
+    ${w(0, .10, 0, .55, 1.7, "rgb(158 224 255)", 2.6)}
+  </svg>`;
+  return box;
+}
+
+/* ==========================================================
+   عارض الصورة: Zoom / Pan / Swipe / Tap
+   ========================================================== */
+class ZoomView {
+  constructor(root, onSwipe, onTap) {
+    this.root = root; this.onSwipe = onSwipe; this.onTap = onTap;
+    this.img = $("#vimg"); this.dot = $("#vdot"); this.flashEl = $("#vflash"); this.errEl = $("#verr");
+    this.zoom = 1; this.offx = 0; this.offy = 0; this.slide = 0; this.alpha = 1; this.flashA = 0;
+    this.natW = 0; this.natH = 0; this.status = ""; this.flashCol = "var(--green)";
+    this.touches = new Map(); this.multi = false; this.tapEv = null;
+    this.lastDown = 0; this.lastPos = [0, 0];
+    this.MAX_ZOOM = 6; this.DOUBLE_ZOOM = 2.5;
+    this.redraw = this.redraw.bind(this);
+    new ResizeObserver(() => { const [mx, my] = this.limits(this.zoom); this.offx = clamp(this.offx, -mx, mx); this.offy = clamp(this.offy, -my, my); this.redraw(); }).observe(root);
+    root.addEventListener("pointerdown", e => this.down(e));
+    root.addEventListener("pointermove", e => this.move(e));
+    root.addEventListener("pointerup", e => this.up(e));
+    root.addEventListener("pointercancel", e => this.up(e, true));
+    root.addEventListener("wheel", e => {
+      e.preventDefault();
+      const f = e.deltaY < 0 ? 1.25 : 0.8;
+      this.setZoom(clamp(this.zoom * f, 1, this.MAX_ZOOM), this.local(e));
+    }, { passive: false });
+    root.addEventListener("dblclick", e => e.preventDefault());
+    root.addEventListener("dragstart", e => e.preventDefault());
+    root.addEventListener("contextmenu", e => e.preventDefault());
+  }
+  get W() { return this.root.clientWidth; }
+  get H() { return this.root.clientHeight; }
+  local(e) { const r = this.root.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+  baseSize() {
+    const W = this.W, H = this.H;
+    if (!this.natW || !this.natH || W <= 0 || H <= 0) return [0, 0];
+    const s = Math.min(W / this.natW, H / this.natH);
+    return [this.natW * s, this.natH * s];
+  }
+  redraw() {
+    const [bw, bh] = this.baseSize(), img = this.img;
+    if (bw > 0 && img.getAttribute("src")) {
+      const cx = this.W / 2 + this.offx + this.slide, cy = this.H / 2 + this.offy;
+      img.style.display = "block";
+      img.style.width = bw + "px"; img.style.height = bh + "px";
+      img.style.transform = `translate(${cx - bw / 2}px,${cy - bh / 2}px) scale(${this.zoom})`;
+      img.style.opacity = this.alpha;
+    } else img.style.display = "none";
+    if (this.status) { this.dot.style.display = "block"; this.dot.style.background = this.status === "rec" ? "var(--green)" : "var(--orange)"; }
+    else this.dot.style.display = "none";
+    this.flashEl.style.opacity = this.flashA;
+    this.flashEl.style.borderColor = this.flashCol;
+  }
+  show(im, direction, keepView, err) {
+    cancelAnim(this, "slide", "alpha");
+    if (!keepView) { cancelAnim(this, "zoom", "offx", "offy"); this.zoom = 1; this.offx = 0; this.offy = 0; }
+    if (im) { this.natW = im.naturalWidth; this.natH = im.naturalHeight; this.img.src = im.src; }
+    else { this.natW = 0; this.natH = 0; this.img.removeAttribute("src"); }
+    this.errEl.textContent = err || ""; this.errEl.style.opacity = err ? 1 : 0;
+    if (direction && !keepView) {
+      this.slide = direction * this.W * 0.18; this.alpha = 0;
+      animate(this, { slide: 0, alpha: 1 }, 0.22, easeOutCubic, null, this.redraw);
+    } else { this.slide = 0; this.alpha = 1; }
+    this.redraw();
+  }
+  setLoading() { this.natW = 0; this.img.removeAttribute("src"); this.errEl.textContent = "Loading\u2026"; this.errEl.style.opacity = 1; this.redraw(); }
+  setStatus(st) { this.status = st || ""; this.redraw(); }
+  resetView() {
+    cancelAnim(this, "zoom", "offx", "offy", "slide", "alpha");
+    this.zoom = 1; this.offx = 0; this.offy = 0; this.slide = 0; this.alpha = 1; this.redraw();
+  }
+  flash(cssColor) {
+    cancelAnim(this, "flashA");
+    this.flashCol = cssColor; this.flashA = 0.9;
+    animate(this, { flashA: 0 }, 0.4, t => t, null, this.redraw);
+    this.redraw();
+  }
+  limits(zoom) { const [bw, bh] = this.baseSize(); return [Math.max(0, (bw * zoom - this.W) / 2), Math.max(0, (bh * zoom - this.H) / 2)]; }
+  clamped(zoom, ox, oy) { const [mx, my] = this.limits(zoom); return [clamp(ox, -mx, mx), clamp(oy, -my, my)]; }
+  focusOffset(nz, f) {
+    const ratio = nz / this.zoom, fx = f[0] - this.W / 2, fy = f[1] - this.H / 2;
+    return this.clamped(nz, fx - (fx - this.offx) * ratio, fy - (fy - this.offy) * ratio);
+  }
+  setZoom(nz, f) { const [ox, oy] = this.focusOffset(nz, f); this.zoom = nz; this.offx = ox; this.offy = oy; this.redraw(); }
+  toggleZoom(pos) {
+    cancelAnim(this, "zoom", "offx", "offy");
+    let target, ox, oy;
+    if (this.zoom > 1.05) { target = 1; ox = 0; oy = 0; }
+    else { target = this.DOUBLE_ZOOM; [ox, oy] = this.focusOffset(target, pos); }
+    animate(this, { zoom: target, offx: ox, offy: oy }, 0.22, easeOutCubic, null, this.redraw);
+  }
+  two() { const t = [...this.touches.values()]; return [t[0], t[1]]; }
+  beginPinch() {
+    const [a, b] = this.two();
+    this.pDist = Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)); this.pZoom = this.zoom;
+    this.pLast = [(a.x + b.x) / 2, (a.y + b.y) / 2];
+  }
+  pinch() {
+    const [a, b] = this.two();
+    const d = Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)), c = [(a.x + b.x) / 2, (a.y + b.y) / 2];
+    const nz = clamp(this.pZoom * d / this.pDist, 1, this.MAX_ZOOM);
+    this.offx += c[0] - this.pLast[0]; this.offy += c[1] - this.pLast[1]; this.pLast = c;
+    this.setZoom(nz, c);
+  }
+  cancelTap() { if (this.tapEv) { clearTimeout(this.tapEv); this.tapEv = null; } }
+  down(e) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    try { this.root.setPointerCapture(e.pointerId); } catch (_) {}
+    const [x, y] = this.local(e), now = performance.now();
+    const t = { x, y, sx: x, sy: y, lx: x, ly: y, moved: false, consumed: false };
+    this.touches.set(e.pointerId, t);
+    cancelAnim(this, "zoom", "offx", "offy");
+    if (this.touches.size >= 2) { this.multi = true; this.cancelTap(); this.beginPinch(); }
+    else if (now - this.lastDown < 280 && Math.hypot(x - this.lastPos[0], y - this.lastPos[1]) < 40) {
+      this.cancelTap(); t.consumed = true; this.lastDown = 0; this.toggleZoom([x, y]);
+    } else { this.lastDown = now; this.lastPos = [x, y]; }
+  }
+  move(e) {
+    const t = this.touches.get(e.pointerId);
+    if (!t) return;
+    const [x, y] = this.local(e), n = this.touches.size;
+    t.x = x; t.y = y;
+    if (n === 1) {
+      if (Math.abs(x - t.sx) > 8 || Math.abs(y - t.sy) > 8) t.moved = true;
+      if (this.zoom > 1.001) {
+        const [ox, oy] = this.clamped(this.zoom, this.offx + (x - t.lx), this.offy + (y - t.ly));
+        this.offx = ox; this.offy = oy; this.redraw();
+      }
+    } else if (n >= 2) this.pinch();
+    t.lx = x; t.ly = y;
+  }
+  up(e, cancelled) {
+    const t = this.touches.get(e.pointerId);
+    if (!t) return;
+    this.touches.delete(e.pointerId);
+    if (this.touches.size) return;
+    const multi = this.multi; this.multi = false;
+    if (this.zoom < 1.02) { this.zoom = 1; this.offx = 0; this.offy = 0; this.redraw(); }
+    if (cancelled || multi || t.consumed) return;
+    const dx = t.x - t.sx, dy = t.y - t.sy;
+    if (this.zoom <= 1.001 && Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.5) this.onSwipe(dx > 0 ? -1 : 1);
+    else if (!t.moved) { this.cancelTap(); this.tapEv = setTimeout(() => { this.tapEv = null; this.onTap(); }, 260); }
   }
 }
 
-// ============================================================
-//   عرض الأقسام
-// ============================================================
-function showSections() {
-  switchScreen("screenSections");
-  const list = document.getElementById("sectionsList");
-  list.innerHTML = "";
+/* ==========================================================
+   حالة التطبيق
+   ========================================================== */
+const S = {
+  data: [], status: {}, seen: new Set(), filtered: [], index: 0, section: "ALL",
+  focus: false, captionOpen: false, markedOn: false, land: false, u: 1,
+  tipI: 0, welcome: null, splash: null, saveTimer: null, renderTok: 0, capTok: 0,
+  sectionsMap: null, markedSet: null, markInfo: new Map(), modals: [],
+};
+const sheetState = { frac: 0.1 };
+let viewer;
+const btn = {};
 
-  const downloaded = JSON.parse(Android.getDownloadedSections());
-  document.getElementById("totalInfo").textContent =
-    `${manifest.total_figures} صورة موزعة على ${manifest.sections.length} أقسام`;
+/* ---------- الصور ---------- */
+function imageUrl(id, marked) {
+  const name = `figure_${pad3(id)}${marked ? "_marked" : ""}.jpg`;
+  for (const r of CONFIG.IMAGE_RELEASES) if (id >= r.from && id <= r.to) return r.base + name;
+  return CONFIG.ASSETS_DIR + name;
+}
+const IMG = new Map();
+function loadImg(url) {
+  const hit = IMG.get(url);
+  if (hit) { IMG.delete(url); IMG.set(url, hit); return hit; }
+  const im = new Image(); im.decoding = "async";
+  const rec = { im, ok: false };
+  rec.p = new Promise((res, rej) => {
+    im.onload = () => { rec.ok = true; res(im); };
+    im.onerror = () => { IMG.delete(url); rej(new Error("load failed")); };
+  });
+  rec.p.catch(() => {});
+  IMG.set(url, rec); im.src = url;
+  while (IMG.size > 14) IMG.delete(IMG.keys().next().value);
+  return rec;
+}
+function probeMark(id) {
+  if (S.markInfo.has(id)) return;
+  if (S.markedSet) { S.markInfo.set(id, S.markedSet.has(id)); return; }
+  S.markInfo.set(id, undefined);
+  loadImg(imageUrl(id, true)).p.then(() => { S.markInfo.set(id, true); afterProbe(id); },
+                                       () => { S.markInfo.set(id, false); afterProbe(id); });
+}
+function afterProbe(id) {
+  const it = S.filtered[S.index];
+  if (it && it.id === id) { btn.mark.disabled = S.markInfo.get(id) !== true; if (S.markInfo.get(id) === false) { S.markedOn = false; btn.mark.classList.remove("active"); } }
+}
 
-  manifest.sections.forEach(sec => {
-    const isDone = downloaded.includes(sec.id);
-    const card = document.createElement("div");
-    card.className = "section-card" + (isDone ? " done" : "");
-    card.id = "card_" + sec.id;
-    card.innerHTML = `
-      <div class="section-info">
-        <div class="section-title">${sec.name}</div>
-        <div class="section-meta">${sec.count} صورة · ${sec.size_mb} ميجابايت</div>
-        <div class="progress-bar" id="bar_${sec.id}" style="display:none">
-          <div class="progress-fill" id="fill_${sec.id}"></div>
-        </div>
-        <div class="progress-text" id="text_${sec.id}"></div>
-      </div>
-      <div class="section-action" id="action_${sec.id}">
-        ${isDone
-          ? '<button class="btn done" onclick="openSection(\'' + sec.id + '\')">فتح</button>'
-          : '<button class="btn" onclick="downloadSection(\'' + sec.id + '\')">تحميل</button>'}
-      </div>
-    `;
-    list.appendChild(card);
+async function loadJSON(path) {
+  try { const r = await fetch(path, { cache: "no-cache" }); if (!r.ok) throw new Error(r.status); return await r.json(); }
+  catch (e) { console.warn("Could not load", path, e); return null; }
+}
+
+/* ---------- البيانات والتقدم ---------- */
+function buildData() {
+  const data = [];
+  for (let i = CONFIG.START_INDEX; i <= CONFIG.END_INDEX; i++) {
+    const key = `figure_${pad3(i)}`;
+    data.push({ id: i, txt: `${CONFIG.ASSETS_DIR}${key}.txt`, section: (S.sectionsMap && S.sectionsMap[key]) || "General" });
+  }
+  return data;
+}
+function loadProgress() {
+  let code = "ALL", lastId = null;
+  const d = LS.get("eegnosis.progress");
+  if (d) {
+    S.status = {};
+    for (const [k, v] of Object.entries(d.status || {})) if (v === "rec" || v === "again") S.status[+k] = v;
+    S.seen = new Set((d.seen || []).map(Number));
+    code = d.section || "ALL";
+    if (d.last_id != null) lastId = +d.last_id;
+    else if (d.last_index != null) lastId = CONFIG.START_INDEX + (+d.last_index);
+  }
+  return [code, lastId];
+}
+function scheduleSave() { clearTimeout(S.saveTimer); S.saveTimer = setTimeout(saveNow, 600); }
+function saveNow() {
+  S.saveTimer = null;
+  if (!S.filtered.length) return;
+  LS.set("eegnosis.progress", { last_id: S.filtered[S.index].id, section: S.section, status: S.status, seen: [...S.seen].sort((a, b) => a - b) });
+}
+function applyFilter(code, targetId) {
+  let lst = code === "ALL" ? S.data.slice() : S.data.filter(d => d.section === code);
+  if (!lst.length) { code = "ALL"; lst = S.data.slice(); }
+  S.section = code; S.filtered = lst; S.index = 0;
+  if (targetId != null) { const i = lst.findIndex(d => d.id === targetId); if (i >= 0) S.index = i; }
+}
+
+/* ==========================================================
+   بناء الواجهة الرئيسية
+   ========================================================== */
+function toolBtn(kind, text) {
+  return el("button", { class: "tool" + (text ? "" : " iconly"), type: "button", "aria-label": text || kind },
+    el("span", { class: "g", html: glyph(kind) }), text ? el("span", { class: "lbl" }, text) : null);
+}
+function iconBtn(id, kind, label) {
+  return el("button", { id, class: "iconbtn", type: "button", "aria-label": label, html: glyph(kind) });
+}
+function pill(text, color, style, onclick, cls = "") {
+  return el("button", { class: `pill t-${color} ${style === "tint" ? "tint" : ""} ${cls}`.trim(), type: "button", onclick }, text);
+}
+
+function buildMain() {
+  btn.cap = toolBtn("caption", "Caption"); btn.mark = toolBtn("mark", "Markings");
+  btn.reset = toolBtn("reset", "Reset"); btn.settings = toolBtn("gear", "");
+  btn.cap.onclick = toggleCaption; btn.mark.onclick = toggleMarkings;
+  btn.reset.onclick = confirmReset; btn.settings.onclick = openSettings;
+  btn.mark.disabled = true;
+  const tools = el("div", { id: "tools" }, btn.cap, btn.mark, btn.reset, btn.settings);
+  $("#topfloat").append(tools);
+
+  btn.prev = iconBtn("btnPrev", "prev", "Previous"); btn.next = iconBtn("btnNext", "next", "Next");
+  btn.prev.onclick = () => navigate(-1); btn.next.onclick = () => navigate(1);
+  btn.again = pill("Again", "orange", "tint", () => mark("again")); btn.again.id = "btnAgain";
+  btn.rec = pill("Recognized", "green", "tint", () => mark("rec")); btn.rec.id = "btnRec";
+  for (const b of [btn.again, btn.rec]) b.style.fontSize = "calc(13px*var(--u))";
+  $("#actions").append(btn.prev, btn.again, btn.rec, btn.next);
+  $("#chip").onclick = openSections;
+
+  viewer = new ZoomView($("#viewer"), navigate, toggleFocus);
+  buildSheet();
+}
+
+let sheetEl;
+function buildSheet() {
+  const handle = el("div", { class: "handle-zone" }, el("i"));
+  const close = iconBtn("closeCap", "close", "Close caption");
+  close.onclick = closeCaption;
+  sheetEl = el("div", { id: "sheet" },
+    el("div", { class: "sheet-head" }, el("div", { class: "lp" }), handle, close),
+    el("div", { class: "sheet-body" }, el("div", { class: "c-tag" }), el("div", { class: "c-head" }), el("div", { class: "c-detail" })));
+  let drag = null;
+  handle.addEventListener("pointerdown", e => { handle.setPointerCapture(e.pointerId); drag = [e.clientX, e.clientY]; cancelAnim(sheetState, "frac"); });
+  handle.addEventListener("pointermove", e => {
+    if (!drag) return;
+    const dx = e.clientX - drag[0], dy = e.clientY - drag[1]; drag = [e.clientX, e.clientY];
+    const st = $("#stage");
+    const d = S.land ? -dx / Math.max(1, st.clientWidth) : -dy / Math.max(1, st.clientHeight);
+    sheetState.frac = clamp(sheetState.frac + d, 0.1, 0.85); applyFrac();
+  });
+  const end = () => { if (!drag) return; drag = null; if (sheetState.frac < 0.16) closeCaption(); };
+  handle.addEventListener("pointerup", end); handle.addEventListener("pointercancel", end);
+}
+function applyFrac() { $("#stage").style.setProperty("--frac", sheetState.frac); }
+function sheetTarget() { return S.u > 1 ? 0.36 : (S.land ? 0.42 : 0.40); }
+function rescaleSheet() {
+  sheetEl.style.setProperty("--k", ((1 + (S.u - 1) * 0.6) * captionScale()).toFixed(3));
+}
+
+/* ---------- القياس والتخطيط ---------- */
+function measure() {
+  const w = innerWidth, h = innerHeight, short = Math.min(w, h);
+  return [w > h, short < 480 ? 1.0 : short < 700 ? 1.2 : 1.4];
+}
+function fitTools() {
+  const tools = $("#tools");
+  const avail = S.land ? innerWidth * 0.5 : innerWidth - 24 * S.u;
+  [btn.cap, btn.mark, btn.reset, btn.settings].forEach(b => b.classList.remove("compact"));
+  if (tools.offsetWidth > avail) btn.reset.classList.add("compact");
+  if (tools.offsetWidth > avail) btn.mark.classList.add("compact");
+}
+function layout() {
+  document.body.classList.toggle("land", S.land);
+  document.documentElement.style.setProperty("--u", S.u);
+  const tools = $("#tools");
+  const slot = S.land ? $("#topfloat") : $("#toolsRow");
+  if (tools.parentElement !== slot) slot.append(tools);
+  rescaleSheet(); fitTools();
+}
+function checkLayout() {
+  const [land, u] = measure();
+  if (land === S.land && u === S.u) { fitTools(); return; }
+  S.land = land; S.u = u;
+  layout();
+  if (S.welcome) rebuildWelcome();
+  if (viewer) viewer.redraw();
+}
+
+/* ---------- الرأس ---------- */
+function updateHeader(anim = true) {
+  const n = S.filtered.length;
+  const answered = S.filtered.filter(d => d.id in S.status).length;
+  const wrong = S.filtered.filter(d => S.status[d.id] === "again").length;
+  $("#statDone").textContent = `${answered} answered`;
+  $("#statWrong").textContent = `${wrong} wrong`;
+  const all = S.section === "ALL", col = all ? "var(--neutral)" : sectionColor(S.section);
+  $("#chipLbl").textContent = SHORT[S.section] || S.section;
+  $("#chipDot").style.background = col;
+  const pf = $("#pfill");
+  pf.style.background = all ? "var(--accent-light)" : col;
+  if (!anim) pf.style.transition = "none";
+  pf.style.width = (n ? answered / n * 100 : 0) + "%";
+  if (!anim) { pf.offsetWidth; pf.style.transition = ""; }
+}
+
+/* ---------- العرض ---------- */
+function render(direction = 0, keepView = false) {
+  if (!S.filtered.length) return;
+  S.index = clamp(S.index, 0, S.filtered.length - 1);
+  const item = S.filtered[S.index];
+  S.seen.add(item.id);
+  if (!keepView) S.markedOn = false;
+  probeMark(item.id);
+  const info = S.markInfo.get(item.id);
+  if (info === false) S.markedOn = false;
+  btn.mark.disabled = info !== true;
+  btn.mark.classList.toggle("active", S.markedOn);
+
+  const url = imageUrl(item.id, S.markedOn), tok = ++S.renderTok, name = `figure_${pad3(item.id)}`;
+  const rec = loadImg(url);
+  if (rec.ok) viewer.show(rec.im, direction, keepView, "");
+  else {
+    const t = setTimeout(() => { if (tok === S.renderTok && !rec.ok) viewer.setLoading(); }, 120);
+    rec.p.then(im => { clearTimeout(t); if (tok === S.renderTok) viewer.show(im, direction, keepView, ""); },
+               () => { clearTimeout(t); if (tok === S.renderTok) viewer.show(null, 0, keepView, `Image not found\n${name}`); });
+  }
+  viewer.setStatus(S.status[item.id] || "");
+  updateHeader();
+  btn.prev.disabled = S.index === 0;
+  btn.next.disabled = S.index === S.filtered.length - 1;
+  if (S.captionOpen) fillCaption(item);
+  scheduleSave();
+  for (const st of [1, 2, -1]) { const n = S.filtered[S.index + st]; if (n) { loadImg(imageUrl(n.id, false)); probeMark(n.id); } }
+}
+function navigate(step) {
+  const n = S.index + step;
+  if (n >= 0 && n < S.filtered.length) { S.index = n; render(step); }
+}
+function mark(st) {
+  if (!S.filtered.length) return;
+  const item = S.filtered[S.index];
+  S.status[item.id] = st;
+  bumpStreak();
+  viewer.setStatus(st); updateHeader();
+  viewer.flash(st === "rec" ? "var(--green)" : "var(--orange)");
+  if (S.index < S.filtered.length - 1) navigate(1); else scheduleSave();
+}
+function toggleFocus() { S.focus = !S.focus; document.body.classList.toggle("focus", S.focus); }
+function toggleMarkings() {
+  if (!S.filtered.length || btn.mark.disabled) return;
+  S.markedOn = !S.markedOn; render(0, true);
+}
+
+/* ---------- الكابشن ---------- */
+const capCache = new Map();
+async function fetchCaption(item) {
+  if (capCache.has(item.id)) return capCache.get(item.id);
+  let text = "";
+  try { const r = await fetch(item.txt); if (r.ok) text = await r.text(); } catch (e) {}
+  capCache.set(item.id, text);
+  return text;
+}
+async function fillCaption(item) {
+  const tok = ++S.capTok, text = await fetchCaption(item);
+  if (tok !== S.capTok) return;
+  let [tag, head, details] = splitCaption(text);
+  if (!head) { tag = ""; head = "No caption available"; details = ""; }
+  $(".c-tag", sheetEl).textContent = tag; $(".c-head", sheetEl).textContent = head;
+  $(".c-detail", sheetEl).textContent = details;
+  $(".sheet-body", sheetEl).scrollTop = 0;
+}
+function toggleCaption() {
+  if (!S.filtered.length) return;
+  if (S.captionOpen) return closeCaption();
+  S.captionOpen = true; btn.cap.classList.add("active");
+  fillCaption(S.filtered[S.index]);
+  cancelAnim(sheetState, "frac");
+  if (!sheetEl.parentElement) { sheetState.frac = 0.1; rescaleSheet(); $("#stage").append(sheetEl); applyFrac(); }
+  animate(sheetState, { frac: sheetTarget() }, 0.25, easeOutCubic, null, applyFrac);
+}
+function closeCaption() {
+  S.captionOpen = false; btn.cap.classList.remove("active");
+  cancelAnim(sheetState, "frac");
+  animate(sheetState, { frac: 0.1 }, 0.2, easeOutCubic, () => { if (!S.captionOpen) sheetEl.remove(); }, applyFrac);
+}
+
+/* ---------- الثيم ---------- */
+function applyTheme(name) {
+  document.documentElement.dataset.theme = name; SETTINGS.theme = name;
+  $('meta[name="theme-color"]').setAttribute("content", THEME_BG[name]);
+  if (S.welcome && S.welcome.wave) S.welcome.wave.refreshColor();
+}
+function setTheme(name) { if (SETTINGS.theme === name) return; applyTheme(name); saveSettings(); }
+function setCaptionSize(key) { SETTINGS.caption_size = key; saveSettings(); rescaleSheet(); }
+
+/* ==========================================================
+   الشاشة الافتتاحية و الترحيب
+   ========================================================== */
+function animatedText(text, sizePx, colorCss, bold) {
+  const box = el("div", { class: "ltrs", style: `font-size:${sizePx}px;font-weight:${bold ? 700 : 400};color:${colorCss};line-height:1.35` });
+  const spans = [...text].map(ch => { const s = el("span", { class: "ltr" }, ch === " " ? "\u00a0" : ch); box.append(s); return s; });
+  box.play = (delay, step, dur) => spans.forEach((s, i) => {
+    s.style.transitionDuration = dur + "s"; s.style.transitionDelay = (delay + i * step) + "s";
+    requestAnimationFrame(() => requestAnimationFrame(() => s.classList.add("on")));
+  });
+  return box;
+}
+function buildSplash() {
+  const u = S.u, W = innerWidth, H = innerHeight;
+  const icon = Math.max(170, Math.min(Math.min(W, H) * 0.52, 440)), gap = 22 * u;
+  const logo = makeLogo(icon); logo.classList.add("logo-fade");
+  const title = animatedText(CONFIG.APP_NAME, 40 * u, "var(--text)", true);
+  const tag = animatedText(CONFIG.TAGLINE, 18 * u, "var(--accent-light)", false);
+  const card = el("div", { class: "card", style: `gap:${gap}px` }, logo, title, tag);
+  const sp = el("div", { class: "overlay splash" }, card);
+  sp.addEventListener("pointerup", dismissSplash);
+  S.splash = sp; $("#app").append(sp);
+  requestAnimationFrame(() => requestAnimationFrame(() => logo.classList.add("on")));
+  title.play(0.6, 0.09, 0.45); tag.play(1.5, 0.045, 0.45);
+  setTimeout(dismissSplash, 2900);
+}
+async function dismissSplash() {
+  const sp = S.splash;
+  if (!sp) return;
+  S.splash = null;
+  await S.ready;
+  sp.classList.add("out");
+  setTimeout(() => sp.remove(), 480);
+  showWelcome();
+}
+
+class WaveBG {
+  constructor() {
+    this.c = el("canvas", { class: "wave" }); this.t = 0; this.last = 0; this.raf = 0;
+    this.reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    this.refreshColor();
+    this.loop = this.loop.bind(this);
+    this.ro = new ResizeObserver(() => { this.resize(); this.draw(); }); this.ro.observe(this.c);
+    if (!this.reduce) this.raf = requestAnimationFrame(this.loop);
+  }
+  refreshColor() { this.col = getComputedStyle(document.documentElement).getPropertyValue("--accent-light-rgb").trim().split(/\s+/).join(","); }
+  resize() { const d = Math.min(2, devicePixelRatio || 1); this.c.width = this.c.clientWidth * d; this.c.height = this.c.clientHeight * d; this.d = d; }
+  loop(now) {
+    this.raf = requestAnimationFrame(this.loop);
+    if (now - this.last < 1000 / 24) return;
+    this.t += Math.min(0.1, (now - this.last) / 1000); this.last = now; this.draw();
+  }
+  draw() {
+    const ctx = this.c.getContext("2d"), w = this.c.clientWidth, h = this.c.clientHeight, d = this.d || 1;
+    if (!w || !h) return;
+    ctx.setTransform(d, 0, 0, d, 0, 0); ctx.clearRect(0, 0, w, h);
+    ctx.lineWidth = 1.6; ctx.lineJoin = "round"; ctx.lineCap = "round";
+    [0.16, 0.12, 0.09, 0.06].forEach((a, k) => {
+      const base = h * (0.22 + 0.17 * k), amp = h * (0.030 + 0.012 * k), freq = 2 + 0.7 * k, speed = 0.6 + 0.25 * k;
+      ctx.strokeStyle = `rgba(${this.col},${a})`; ctx.beginPath();
+      for (let i = 0; i <= 60; i++) {
+        const fx = i / 60;
+        const y = base + amp * (Math.sin(2 * Math.PI * freq * fx + this.t * speed * 2) + 0.5 * Math.sin(2 * Math.PI * freq * 2.3 * fx - this.t * speed * 3));
+        i ? ctx.lineTo(w * fx, h - y) : ctx.moveTo(w * fx, h - y);
+      }
+      ctx.stroke();
+    });
+  }
+  stop() { cancelAnimationFrame(this.raf); this.ro.disconnect(); }
+}
+
+function currentTip() {
+  const d = new Date(), ord = Math.round(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) / 86400000) + 719163;
+  return TIPS[(ord + S.tipI) % TIPS.length];
+}
+function showWelcome() { if (!S.welcome) buildWelcome(false); }
+function hideWelcome() {
+  const w = S.welcome;
+  if (!w) return;
+  S.welcome = null; w.wave.stop(); w.el.classList.add("out");
+  setTimeout(() => w.el.remove(), 380);
+}
+function rebuildWelcome() {
+  const old = S.welcome;
+  if (old) { old.wave.stop(); old.el.remove(); S.welcome = null; }
+  buildWelcome(true);
+}
+function buildWelcome(instant) {
+  const u = S.u, land = S.land, W = innerWidth;
+  const answered = Object.keys(S.status).length;
+  const wrong = Object.values(S.status).filter(v => v === "again").length;
+  const pct = S.data.length ? answered / S.data.length : 0, streak = streakNow();
+
+  const root = el("div", { class: "overlay welcome" });
+  const wave = new WaveBG(); root.append(wave.c);
+  const contentW = land ? Math.min(W * 0.92, 940 * u) : Math.min(W * 0.92, 560 * u);
+  const main = el("div", { class: "w-main" + (land ? " two" : ""), style: `width:${contentW}px` });
+
+  const head = el("div", { class: "blk", style: `gap:${10 * u}px` });
+  if (!land) head.append(el("div", { style: "display:flex;justify-content:center" }, makeLogo(72 * u)));
+  head.append(el("div", { class: "w-title", style: `font-size:${(land ? 30 : 34) * u}px` }, "Welcome to the\nEEG world"),
+              el("div", { class: "w-sub", style: `font-size:${16 * u}px` }, "Train your eye to read the waves, one pattern at a time."));
+
+  const ringSvg = `<svg viewBox="0 0 88 88" aria-hidden="true"><circle cx="44" cy="44" r="36" fill="none" stroke="rgb(var(--text-rgb)/.12)" stroke-width="6"/>
+    <circle class="arc" cx="44" cy="44" r="36" fill="none" stroke="var(--accent-light)" stroke-width="6" stroke-linecap="round" transform="rotate(-90 44 44)" stroke-dasharray="0 999"/></svg>`;
+  const ringLbl = el("b", null, "0%");
+  const ring = el("div", { class: "ring", html: ringSvg }, ringLbl);
+  const arc = $(".arc", ring), CIRC = 2 * Math.PI * 36;
+  const ringState = { f: 0 };
+  const setRing = () => {
+    const f = clamp(ringState.f, 0, 1);
+    ringLbl.textContent = Math.round(f * 100) + "%";
+    arc.setAttribute("stroke-dasharray", f < 0.004 ? "0 999" : `${CIRC * f} ${CIRC}`);
+  };
+  const pcard = el("div", { class: "pcard" }, ring, el("div", { class: "pinfo" },
+    el("div", { class: "l1" }, "Your progress"),
+    el("div", { class: "l2" }, `${answered} answered  \u00b7  ${wrong} to review`),
+    el("div", { class: "l3" + (streak > 0 ? " on" : "") }, streak > 0 ? `${streak}-day streak` : "Answer one to start a streak")));
+  const tipT = el("div", { class: "t" }, currentTip());
+  const tcard = el("button", { class: "tcard", type: "button" }, el("div", { class: "k" }, "EEG TIP  \u00b7  tap for another"), tipT);
+  tcard.onclick = () => { S.tipI++; tipT.textContent = currentTip(); tipT.style.opacity = 0; requestAnimationFrame(() => requestAnimationFrame(() => { tipT.style.opacity = 1; })); };
+  const cards = el("div", { class: "blk" }, pcard, tcard);
+
+  const start = pill(answered ? "Continue reviewing" : "Start reviewing", "accent", "solid", hideWelcome, "startbtn");
+  const row = el("div", { class: "wrow" });
+  for (const [kind, text, cb] of [["gear", "Settings", openSettings], ["mail", "Contact us", openContact], ["info", "About", openAbout]]) {
+    const b = toolBtn(kind, text); b.onclick = () => cb(); row.append(b);
+  }
+  const actions = el("div", { class: "blk" }, start, row);
+
+  if (land) {
+    const left = el("div", { class: "blk", style: `gap:${22 * u}px` }, head, actions);
+    main.append(left, cards);
+  } else main.append(head, cards, actions);
+  root.append(el("div", { class: "w-scroll" }, main));
+  $("#app").insertBefore(root, $("#modalHost"));
+  S.welcome = { el: root, wave };
+
+  if (instant) { ringState.f = pct; setRing(); return; }
+  [head, cards, actions].forEach((b, i) => { b.classList.add("fadein"); b.style.animationDelay = (0.15 + i * 0.25) + "s"; });
+  root.classList.add("fadein"); root.style.animationDuration = ".45s";
+  setTimeout(() => animate(ringState, { f: pct }, 1.0, easeOutCubic, null, setRing), 600);
+}
+
+/* ==========================================================
+   النوافذ المنبثقة
+   ========================================================== */
+function openModal(widthPx, build) {
+  const ov = el("div", { class: "modal-ov" });
+  const box = el("div", { class: "modal-box", style: `width:min(92%,${widthPx * S.u}px)` });
+  let closed = false;
+  const view = { dismiss() {
+    if (closed) return; closed = true; ov.classList.remove("in");
+    S.modals = S.modals.filter(m => m !== view); setTimeout(() => ov.remove(), 160);
+  } };
+  ov.addEventListener("pointerdown", e => { if (e.target === ov) view.dismiss(); });
+  build(box, view);
+  ov.append(box); $("#modalHost").append(ov); S.modals.push(view);
+  requestAnimationFrame(() => ov.classList.add("in"));
+  return view;
+}
+
+function openSettings() {
+  openModal(460, (box, view) => {
+    const seg = (options, current, pick) => el("div", { class: "m-seg" }, options.map(([key, label]) =>
+      pill(label, key === current ? "accent" : "neutral", key === current ? "solid" : "tint", () => pick(key))));
+    const action = (text, cb, color = "neutral") =>
+      pill(text, color, "tint", () => { view.dismiss(); later(cb); }, "m-btn");
+    const pickTheme = k => { view.dismiss(); setTheme(k); later(openSettings); };
+    const pickSize = k => { view.dismiss(); setCaptionSize(k); later(openSettings); };
+    const done = pill("Done", "accent", "solid", () => view.dismiss(), "m-btn"); done.style.height = "calc(46px*var(--u))"; done.style.fontSize = "calc(15px*var(--u))";
+    box.append(
+      el("div", { class: "m-title left" }, "Settings"),
+      el("div", { class: "m-scroll" },
+        el("div", { class: "m-cap" }, "APPEARANCE"), seg([["dark", "Dark"], ["light", "Light"]], SETTINGS.theme, pickTheme),
+        el("div", { class: "m-cap" }, "CAPTION TEXT SIZE"), seg([["small", "Small"], ["medium", "Medium"], ["large", "Large"]], SETTINGS.caption_size, pickSize),
+        el("div", { class: "m-cap" }, "MORE"),
+        action("Welcome screen", showWelcome), action("Contact us", openContact), action("About", openAbout),
+        action("Reset progress", confirmReset, "orange")),
+      done);
   });
 }
 
-// ============================================================
-//   تحميل قسم
-// ============================================================
-function downloadSection(sectionId) {
-  const sec = manifest.sections.find(s => s.id === sectionId);
-  if (!sec) return;
-
-  document.getElementById("bar_" + sectionId).style.display = "block";
-  document.getElementById("text_" + sectionId).textContent = "جاري التحميل...";
-  document.getElementById("action_" + sectionId).innerHTML = "";
-
-  Android.downloadSection(sectionId, sec.zip_url);
+function openContact() {
+  openModal(460, (box, view) => {
+    const status = el("div", { class: "m-status" });
+    const copy = async () => {
+      try { await navigator.clipboard.writeText(CONFIG.CONTACT_EMAIL); status.textContent = "Email copied"; return; } catch (e) {}
+      try {
+        const ta = el("textarea", { style: "position:fixed;opacity:0" }); ta.value = CONFIG.CONTACT_EMAIL; document.body.append(ta);
+        ta.select(); const ok = document.execCommand("copy"); ta.remove();
+        status.textContent = ok ? "Email copied" : "Couldn't copy the email";
+      } catch (e) { status.textContent = "Couldn't copy the email"; }
+    };
+    const send = () => {
+      let left = false; const flag = () => { left = true; };
+      window.addEventListener("blur", flag, { once: true }); document.addEventListener("visibilitychange", flag, { once: true });
+      location.href = `mailto:${CONFIG.CONTACT_EMAIL}?subject=EEGnosis%20feedback`;
+      setTimeout(() => { if (!left) { copy().then(() => { status.textContent = "No mail app found \u2014 email copied instead"; }); } }, 1200);
+    };
+    box.append(el("div", { class: "m-title" }, "Contact us"),
+      el("div", { class: "m-msg" }, "Questions, feedback or ideas? We'd love to hear from you."),
+      el("div", { class: "m-mail" }, CONFIG.CONTACT_EMAIL), status,
+      el("div", { class: "m-row" }, pill("Copy email", "neutral", "tint", copy), pill("Send email", "accent", "solid", send)));
+    if (CONFIG.CONTACT_WEBSITE)
+      box.append(pill("Visit website", "neutral", "tint", () => window.open(CONFIG.CONTACT_WEBSITE, "_blank", "noopener"), "m-btn"));
+  });
 }
 
-// ============================================================
-//   استقبال تحديثات التقدم من Java
-// ============================================================
-function updateProgress(sectionId, percent, status) {
-  const bar = document.getElementById("bar_" + sectionId);
-  const fill = document.getElementById("fill_" + sectionId);
-  const text = document.getElementById("text_" + sectionId);
-  const action = document.getElementById("action_" + sectionId);
-
-  if (!bar) return;
-
-  if (status === "downloading") {
-    bar.style.display = "block";
-    fill.style.width = percent + "%";
-    text.textContent = `جاري التحميل... ${percent}%`;
-  } else if (status === "extracting") {
-    fill.style.width = "100%";
-    text.textContent = "جاري فك الضغط...";
-  } else if (status === "done") {
-    text.textContent = "✅ تم التحميل";
-    action.innerHTML = '<button class="btn done" onclick="openSection(\'' + sectionId + '\')">فتح</button>';
-    // تحديث القسم في الواجهة
-    const card = document.getElementById("card_" + sectionId);
-    if (card) card.classList.add("done");
-  } else if (status.startsWith("error")) {
-    text.textContent = "❌ فشل التحميل";
-    text.style.color = "#dc2626";
-    action.innerHTML = '<button class="btn" onclick="downloadSection(\'' + sectionId + '\')">إعادة</button>';
-  }
+function openAbout() {
+  openModal(460, (box, view) => {
+    box.append(el("div", { class: "m-about" }, makeLogo(72 * S.u),
+      el("div", { class: "nm" }, CONFIG.APP_NAME), el("div", { class: "tg" }, CONFIG.TAGLINE),
+      el("div", { class: "ds" }, "An interactive EEG atlas for training pattern recognition: review the waves, recognize them, and revisit the ones you miss."),
+      el("div", { class: "vr" }, `Version ${CONFIG.APP_VERSION}`)),
+      pill("Close", "accent", "solid", () => view.dismiss(), "m-btn"));
+  });
 }
 
-// ============================================================
-//   فتح قسم (عرض الصور)
-// ============================================================
-function openSection(sectionId) {
-  const sec = manifest.sections.find(s => s.id === sectionId);
-  if (!sec) return;
-
-  currentSection = sec;
-  currentImages = [];
-  for (let i = sec.first; i <= sec.last; i++) {
-    const num = i.toString().padStart(3, "0");
-    currentImages.push({
-      num: i,
-      img: `file://${Android.getFiguresDir()}/figure_${num}.jpg`,
-      txt: `file://${Android.getFiguresDir()}/figure_${num}.txt`
-    });
-  }
-
-  currentIndex = 0;
-  switchScreen("screenViewer");
-  document.getElementById("currentSection").textContent = sec.name;
-  render();
+function confirmReset() {
+  openModal(420, (box, view) => {
+    box.append(el("div", { class: "m-title" }, "Start over?"),
+      el("div", { class: "m-msg" }, "This clears all your answered and wrong marks and takes you back to the first image."),
+      el("div", { class: "m-row" }, pill("Cancel", "neutral", "tint", () => view.dismiss()),
+        pill("Reset", "orange", "tint", () => { view.dismiss(); resetProgress(); })));
+  });
+}
+function resetProgress() {
+  S.status = {}; S.seen.clear(); applyFilter("ALL", null);
+  viewer.resetView(); render(); saveNow();
 }
 
-// ============================================================
-//   عرض الصورة
-// ============================================================
-function render() {
-  if (currentImages.length === 0) return;
-  currentIndex = Math.max(0, Math.min(currentIndex, currentImages.length - 1));
-  const item = currentImages[currentIndex];
-  document.getElementById("figureImg").src = item.img;
-  document.getElementById("counter").textContent = (currentIndex + 1) + " / " + currentImages.length;
-  document.getElementById("prevBtn").disabled = currentIndex === 0;
-  document.getElementById("nextBtn").disabled = currentIndex === currentImages.length - 1;
+function openSections() {
+  const counts = {};
+  for (const d of S.data) counts[d.section] = (counts[d.section] || 0) + 1;
+  const codes = [["ALL", "All Sections"]];
+  for (const [code, label] of SECTIONS.slice(1)) if (counts[code]) codes.push([code, label]);
+  if (counts.General) codes.push(["General", "General"]);
+  openModal(460, (box, view) => {
+    const list = el("div", { class: "m-scroll" });
+    for (const [code, label] of codes) {
+      const done = S.data.filter(d => (code === "ALL" || d.section === code) && d.id in S.status).length;
+      const row = el("button", { class: "srow" + (code === S.section ? " act" : ""), type: "button" },
+        el("span", { class: "dot", style: `background:${code === "ALL" ? "var(--neutral)" : sectionColor(code)}` }),
+        el("span", { class: "nm" }, label), el("span", { class: "ct" }, `${done} answered`));
+      row.onclick = () => { view.dismiss(); selectSection(code); };
+      list.append(row);
+    }
+    box.style.padding = "calc(14px*var(--u))";
+    box.append(el("div", { class: "m-title left", style: "font-size:calc(16px*var(--u))" }, "Sections"), list);
+  });
+}
+function selectSection(code) {
+  const cur = S.filtered.length ? S.filtered[S.index].id : null;
+  applyFilter(code, cur); render();
 }
 
-function nav(d) {
-  const n = currentIndex + d;
-  if (n >= 0 && n < currentImages.length) {
-    currentIndex = n;
-    render();
-  }
-}
-
-function goBack() {
-  switchScreen("screenSections");
-  showSections();
-}
-
-// ============================================================
-//   النص (Caption)
-// ============================================================
-async function toggleCaption() {
-  const overlay = document.getElementById("captionOverlay");
-  const text = document.getElementById("captionText");
-
-  if (overlay.classList.contains("show")) {
-    overlay.classList.remove("show");
+/* ==========================================================
+   التشغيل
+   ========================================================== */
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    const m = S.modals[S.modals.length - 1];
+    if (m) m.dismiss(); else if (S.captionOpen) closeCaption();
     return;
   }
+  if (S.modals.length || S.welcome || S.splash) return;
+  if (e.key === "ArrowRight") navigate(1);
+  else if (e.key === "ArrowLeft") navigate(-1);
+});
+addEventListener("pagehide", saveNow);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") saveNow(); });
+let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(checkLayout, 60); });
+addEventListener("orientationchange", () => setTimeout(checkLayout, 200));
 
-  const item = currentImages[currentIndex];
-  text.textContent = "جاري التحميل...";
-  overlay.classList.add("show");
-
-  try {
-    const response = await fetch(item.txt);
-    if (response.ok) {
-      const content = await response.text();
-      text.textContent = content || "لا يوجد نص.";
-    } else {
-      text.textContent = "لا يوجد نص.";
-    }
-  } catch (e) {
-    text.textContent = "تعذر تحميل النص.";
-  }
+async function boot() {
+  applyTheme(SETTINGS.theme);
+  [S.land, S.u] = measure();
+  buildMain(); layout();
+  await Promise.race([probeIcon(), new Promise(r => setTimeout(r, 500))]);
+  S.ready = (async () => {
+    const [sections, marked] = await Promise.all([loadJSON(CONFIG.ASSETS_DIR + "sections.json"), loadJSON(CONFIG.ASSETS_DIR + "marked.json")]);
+    S.sectionsMap = sections;
+    if (Array.isArray(marked)) S.markedSet = new Set(marked.map(Number));
+    S.data = buildData();
+    const [code, lastId] = loadProgress();
+    applyFilter(code, lastId);
+    render();
+  })();
+  buildSplash();
+  S.ready.then(() => { if (!S.sectionsMap) console.warn("sections.json not found — all figures are in 'General'."); });
 }
-
-// ============================================================
-//   العلامات (Markings)
-// ============================================================
-function toggleMarkings() {
-  const item = currentImages[currentIndex];
-  const img = document.getElementById("figureImg");
-  const num = item.num.toString().padStart(3, "0");
-  img.src = `file://${Android.getFiguresDir()}/figure_${num}_marked.jpg`;
-}
-
-// ============================================================
-//   التنقل بين الشاشات
-// ============================================================
-function switchScreen(screenId) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.remove("active"));
-  document.getElementById(screenId).classList.add("active");
-}
-
-// ============================================================
-//   Swipe
-// ============================================================
-let touchStartX = 0;
-let touchStartY = 0;
-document.addEventListener("touchstart", e => {
-  touchStartX = e.changedTouches[0].screenX;
-  touchStartY = e.changedTouches[0].screenY;
-}, { passive: true });
-document.addEventListener("touchend", e => {
-  const dx = e.changedTouches[0].screenX - touchStartX;
-  const dy = e.changedTouches[0].screenY - touchStartY;
-  if (document.getElementById("screenViewer").classList.contains("active")) {
-    if (Math.abs(dx) > 80 && Math.abs(dx) > Math.abs(dy)) {
-      nav(dx < 0 ? 1 : -1);
-    }
-  }
-}, { passive: true });
-
-// ============================================================
-//   بدء التطبيق
-// ============================================================
-window.addEventListener("load", loadManifest);
+boot();
 </script>
 </body>
 </html>

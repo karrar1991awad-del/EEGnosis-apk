@@ -1,7 +1,0 @@
-FIGURE 81. Carbamazepine-Induced Myoclonic Seizure. A 3-year-old boy with a history of GTCS who developed frequent myoclonic jerks and drop attacks 2 weeks after 
-starting the treatment with carbamazepine (CBZ). Ictal EEG during one of his myoclonic seizures shows a burst of generalized polyspike-and-slow-wave discharge followed by a 
-brief diﬀ use electrodecrement and 5-Hz theta slowing. Myoclonic seizures and drop attacks disappeared 2 days after stopping CBZ.
-CBZ is the most common antiepileptic drug (AED) causing AED-induced seizure worsening. CBZ can both aggravate and induce new seizure types including absence, atonic, 
-or myoclonic seizures in patients with generalized epilepsies. Vigabatrin and gabapentin have been found to induce absence and myoclonic seizures. Benzodiazepines have been 
-reported to precipitate tonic seizures in patients with Lennox–Gastaut syndrome. Lamotrigine has been reported to worsen myoclonic, clonic, and tonic-clonic seizures in the 
-patients with Dravet syndrome.1–3 Therefore, “AED-induced seizure worsening” must be considered in all patients whose seizures are worse with the introduction of the new AED.

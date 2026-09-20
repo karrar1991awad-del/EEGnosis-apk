@@ -1,7 +1,0 @@
-FIGURE 1 17. Lambda Waves. Lambda waves are “sharp transients occurring over the occipital region of the head of waking subjects during visual exploration, mainly positive 
-relative to other areas and time locked to saccadic eye movement. Amplitude varies, but is generally below 50 μV.”6 Lambda waves do not occur before 1 year of age and are 
-most common during the middle years of childhood. The prevalence of lambda waves between 3 and 12 years is about 80%. Lambda waves have been described as biphasic or 
-triphasic; their predominant positive component is preceded and followed by a negative component. They may be asymmetrical on the two sides or may be present only on one 
-side. Strictly speaking, they are bilaterally synchronous. The most important precipitating factor of lambda waves is voluntary scanning eye movements. Lambda waves usually 
-occur as random and isolated waveforms but may recur at intervals of 200–500 msec as in this EEG page.9 Sometimes, especially when present unilaterally, they may be mistaken 
-for focal abnormalities, but the distinction can be made by replacing the geometric image with a blank surface.13

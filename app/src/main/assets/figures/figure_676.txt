@@ -1,9 +1,0 @@
-FIGURE 9 68. Temporal Lobe Epilepsy; Low-Grade Tumor, Right Mesial-Posterior Temporal Lobe. A 17-year-old boy with medically intractable localization-related 
-epilepsy. His seizure was described as staring oﬀ  and orofacial and hand automatisms, followed by head and eye deviation to the left side with or without generalized tonic-clonic 
-seizure. EEG shows occasional spikes and sharp waves in the right anterior- and midtemporal region (T2, T4) with maximal potential at the T1-T2 channel (double arrows). MRI with 
-coronal FLAIR, axial FLAIR, and sagittal T1 sequences (open arrow) shows a cystic lesion most likely a low-grade tumor in the right mesial-posterior temporal region. The seizure 
-semiology is compatible with “hypomotor” seizure, which is a signature of temporal lobe epilepsy. 
-Additional electrodes can be used to supplement the standard 10-20 System.115 Ninety-seven percent of spikes are detected using additional anterior temporal region surface 
-electrodes (T1 and T2), whereas 58% of the spikes are detected using only 10-20 System electrodes. Anterior temporal electrodes (T1 and T2) are able to detect nearly all interictal 
-epileptiform discharges recorded by the foramen ovale electrode. Therefore, assuming that the location of the foramen ovale electrode is analogous to that of sphenoidal 
-electrodes optimally implanted under ﬂ  uoroscopy, the use of sphenoidal electrodes in routine interictal investigations appears not to be justiﬁ  ed.116

@@ -1,8 +1,0 @@
-FIGURE 9 96. Left Thalamic Lesion; Secondary Bilateral Synchrony. Generalized spike-wave (GSW) discharges are a hallmark of idiopathic generalized epilepsy (IGE). The 
-reticular thalamic nucleus is the pacemaker structure for the rhythmic cortical oscillations in spindle frequency range, which transform into GSW activity in IGE.183,184 The nucleus 
-anterior thalami and the zona incerta have an important role in secondary bilateral synchrony.185–187 GSW discharges were described in patients with shunted hydrocephalus and 
-in hypothalamic lesions.188–190
-Most patients with unilateral thalamic lesions and epilepsy showed bilateral synchronous GSW discharges.191–195 In the generation of GSW, the cortex is considered to be the 
-decisive factor, while the thalamus is involved secondarily.193 The primary role in the synchronized activity of the thalamus and cortex is attributed to the reticular nucleus.183,184 
-Zona incerta contains a GABAergic inhibitory eﬀ ect on the higher order thalamic nuclei projecting to the neocortex, which results in eﬀ ective, state-dependent gating of 
-thalamocortical information.186 A lesion of this system can lead to disinhibition and marked activation of the paroxysmal activity in sleep.

@@ -1,6 +1,0 @@
-FIGURE 5 67. Evolution of EEG in Anoxic Encephalopathy: GPEDs. (Same patient as in Figure 5-66) EEG on day 3 shows bilateral synchronous spikes and sharp waves in all 
-regions with frontal predominance, occurring every 0.5–1.5 sec. 
-Generalized periodic epileptiform discharges (GPEDs) after an anoxic encephalopathy carries a poor prognosis for survival. Aggressive treatment may not be warranted, 
-especially when GPEDs with very low inter-GPED amplitude are seen after anoxic brain injury. On the other hand, 43% of patients with toxic/metabolic disturbance and 64% with 
-a primary neurologic process with GPEDs survived. Approximately 30% of GPEDs are associated with NCSE. GPEDs with SE have higher amplitude, longer duration, and lower 
-inter-GPED amplitude.

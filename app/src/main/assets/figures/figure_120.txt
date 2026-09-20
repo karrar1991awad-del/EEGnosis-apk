@@ -1,7 +1,0 @@
-FIGURE 23. Eye Movement Artifact (Nystagmus); Holoprosencephaly. An 8-year-old boy, who developed constant horizontal nystagmus, with congenital 
-hydranencephaly and microcephaly with severe global developmental delay. EEG shows ﬂ  attening of the background activity with rapid lateral eye movements characterized by 
-“out-of-phase” potentials between F7 and F8. 
-The cornea produces a potential of approximately 50–100 mV. When the eye moves to the left, the cornea comes closer to the F7 electrode, causing a positive phase reversal 
-with maximal positive potential at the F7 electrode, and a negative phase reversal with maximal negative potential recorded at the F8 electrode (open arrow).2 
-This EEG supported that the nystagmus in this patient was nonepileptic. Ophthalmic ﬁ  ndings in hydranencephaly include pupillary abnormalities, strabismus, nystagmus, 
-ptosis, optic nerve hypoplasia, chorioretinitis, retinal vessel attenuation, and incomplete anterior chamber cleavage.3

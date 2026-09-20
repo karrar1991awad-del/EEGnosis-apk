@@ -1,8 +1,0 @@
-FIGURE 9 56. Intrinsic Epileptogenicity; Focal Cortical Dysplasia (FCD). (Same patient as in Figure 9-55) FDG-PET scan during continuous left occipital spikes 
-demonstrates hypometabolism in the left temporo-occipital region, which is much larger than the FCD and the area of intrinsic epileptogenicity. 
-FDG-PET is very sensitive in localizing the area of seizure onset in patients with focal epilepsy, and includes areas outside the epileptogenic zone, and overestimates the extent 
-of surgical resection needed to achieve seizure freedom. Glucose metabolism is nonspeciﬁ  c and can be seen in patients without seizures such as periventricular leukomalacia. The 
-area of hypometabolism in FDG-PET does not necessarily correspond precisely to the seizure onset zone.94 Flumazenil (FMZ) PET scan detected at least the seizure onset zone in 
-all patients, whereas FDG-PET failed to detect the seizure onset zone in 20%. Neither FMZ nor FDG PET was sensitive in identifying cortical areas of rapid seizure spread.95 In the 
-patients with neocortical epilepsies, the cortical areas of decreased FMZ binding showed good correspondence and were smaller than the areas of glucose hypometabolism in 
-FDG-PET.94

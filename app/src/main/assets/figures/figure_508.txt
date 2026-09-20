@@ -1,7 +1,0 @@
-FIGURE 7 27. Unilateral Paroxysmal Fast Activity (PFA); Infantile Spasms. (Same patient as in Figure 7-26) A 4-year-old boy with intractable infantile spasms caused by 
-herpes simplex encephalitis at 2 years of age. His seizures were described as very frequent clusters of asymmetric epileptic spasms with head and eyes deviating to the left side 
-with nystagmus. EEG during sleep shows left hemihypsarrhythmia with bursts of diﬀ use high-voltage fast activity (20–24/sec), compatible with unilateral PFA (arrow) over the 
-left hemisphere, with no clinical accompaniment except bradycardia noted in the ECG channel (double arrows). Absence of PFA in the right hemisphere may be due to severe 
-damage to the neocortex, which is an important substrate in generating PFA.
-Although PFA is very common in the EEG of Lennox-Gastaut syndrome, it can also be seen in infantile spasms,15 progressive partial epilepsy, and atypical generalized epilepsy.79 
-The minimal substrate for the production of seizures consists of spike-wave/polyspike-wave complexes and runs of fast activity in the neocortex.80

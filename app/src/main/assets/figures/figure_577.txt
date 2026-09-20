@@ -1,9 +1,0 @@
-FIGURE 8 24. Myoclonic-Astatic Seizure (MAS - Myoclonic Seizure with Atonia); Myoclonic Astatic Epilepsy (MAE). EEG of a 7-year-old boy with MAE during his typical seizure 
-described as myoclonic jerks of arms (open arrows) followed by head drop (double arrows).
-MAS develop atonia immediately after a single or a series of 2–3 myoclonic seizures (MS). A sudden loss of tone causes either a drop attack or slight myatonia, head nodding, or 
-sagging at the knees (post-myoclonic myatonia or epileptic negative myoclonus).41,42 Ictal EEG during MS is similar to a pure atonic seizure (AS) and characterized by a generalized (poly)
-spike-and-wave discharges that can be isolated or repeated rhythmically at 2–4 Hz, lasting 2–6 sec. MS are time-locked to a spike-and-wave complex. The EMG correlation of each jerk 
-is a burst lasting around 100 msec, followed by a longer (200–500 msec) post-myoclonic myatonia. The atonic component of seizures is characterized by a rhythmic discharge of (poly)
-spike-and-slow-wave complexes at 2–4 Hz, accompanied by EMG inhibition lasting 60–400 msec, synchronous in the recorded muscles and time-locked to the onset of the slow wave. 
-This generalized post-myoclonic myatonia has caused the fall. The number of spikes in the individual complexes are associated with the severity of MS. AS is usually associated with the 
-slow wave of a (poly)spike-wave complex, and the intensity of atonia is proportionate to the amplitude of the slow wave.14,41,43

@@ -1,8 +1,0 @@
-FIGURE 5 55. Alpha Coma. A 15-year-old boy with a cerebellar infarction secondary to dissection of his right vertebral artery. He was in a coma and subsequently developed 
-central herniation syndrome, and died 2 days after this EEG recording. Note broadly diﬀ use distribution of alpha activity without an anterior-posterior gradient that is nonreactive 
-to external stimuli. This EEG pattern is called “alpha coma (AC).” 
-AC is in the alpha frequency range that occurs with a generalized distribution in a comatose patient. It is monomorphic, does not change in response to sensory stimuli, and is 
-most commonly predominant in the frontal region. AC is most frequently seen in anoxic encephalopathy caused by cardiorespiratory arrest (CRA) and is associated with a very poor 
-prognosis. AC can also be seen in toxic encephalopathies, which are very similar to that seen with CRA, except with beta activity superimposed on the alpha activity. Other etiologies 
-include head trauma, CJD, brainstem lesion, and encephalitis. Prognosis in AC depends on the underlying causes of coma. Etiology and outcome of AC and other rhythmic coma 
-patterns (beta, theta, and spindle) were similar. One type of rhythmic pattern can change to another. Reactive rhythmic coma was associated with favorable outcome.57–59,100

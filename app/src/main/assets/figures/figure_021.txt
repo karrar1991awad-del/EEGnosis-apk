@@ -1,6 +1,0 @@
-FIGURE 1 19. Lambda Waves. Lambda waves (A) are “sharp transients occurring over the occipital region of the head of waking subjects during visual exploration,” mainly 
-positive relative to other areas and time locked to saccadic eye movement. Amplitude varies, but is generally below 50 μV.6 Lambda waves have been described as biphasic or 
-triphasic; their predominant positive component is preceded and followed by a negative component. They are most commonly seen in children aged 2–15 years. They may 
-be asymmetrical on the two sides or may be present only on one side although are strictly bilateral synchronous. The most important precipitating factor of lambda waves is 
-voluntary scanning eye movements.9 POSTS (B, sample from the other EEG), also known as “lambdoid waves” are usually monophasic, sharply contoured electropositive waves 
-seen mainly during light to moderate levels of sleep.

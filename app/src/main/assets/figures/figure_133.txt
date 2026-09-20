@@ -1,3 +1,0 @@
-FIGURE 2 16. Lateral Rectus Spikes. A lateral rectus spike is a single motor unit potential, best seen in frontal electrodes during lateral eye movement. It is characterized 
-by a short-duration spike overriding a slow wave resulting from rapid lateral eye movement. Eye lead channels (not shown) demonstrate eye movement time-locked with lateral 
-rectus spikes.

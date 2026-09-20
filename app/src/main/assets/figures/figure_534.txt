@@ -1,9 +1,0 @@
-FIGURE 7 53. Asymmetric Paroxysmal Fast Activity (PFA); Lennox-Gastaut Syndrome (LGS). (Same patient as in Figure 7-52) EEG during NREM sleep shows 5–6 seconds 
-of asymmetric 10-Hz rhythmic activity with higher voltage in the left hemisphere, maximal in the temporal region, followed by a generalized sharp- and slow-wave complex with 
-no clinical accompaniment. 
-Paroxysmal fast activity (PFA) or “fast run” is a characteristic EEG pattern of LGS occurring most often during NREM sleep and rarely during wakefulness or REM sleep. It is 
-characterized by runs of 1–9 sec in duration, fast rhythmic waves or polyspikes, at 10–20 Hz, which show no change in frequency throughout the burst, preceded or followed by 
-generalized sharp- and slow-wave complexes. PFA is usually widespread in distribution and bilaterally synchronous over both hemispheres, with the highest amplitude over the 
-frontal and central head regions. Shifting asymmetries are not uncommon. Persistent amplitude asymmetry, unilateral or focal, may rarely be seen. It is often associated with tonic 
-seizures, especially if it lasts longer than 6 sec or occurs during wakefulness. Some authors require both generalized slow spike-wave (SSW) activity and PFA during sleep for the 
-diagnosis of LGS.106,109,111,125,128

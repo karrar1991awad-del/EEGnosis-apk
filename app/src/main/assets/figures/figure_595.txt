@@ -1,5 +1,0 @@
-FIGURE 8 42. Paroxysmal Fast Activity (PFA); Generalized Clonic Seizures. (Same recording as in Figure 8-41) EEG during one of her typical tremor-like episodes shows a 
-run of 3 sec fast rhythmic spikes at 15 Hz, which shows no change in frequency throughout the burst, preceded and followed by generalized spike-wave activity. This EEG pattern 
-is consistent with “paroxysmal fast activity (PFA)” commonly seen in Lennox-Gastaut syndrome. PFA can be either an interictal activity or ictal activity correlating with generalized 
-tonic seizures. However, PFA can also be associated with other generalized or focal epilepsies. In this case, PFA is associated with generalized clonic seizures presenting as tremor-
-like episodes.

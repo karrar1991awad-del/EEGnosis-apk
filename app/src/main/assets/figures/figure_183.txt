@@ -1,7 +1,0 @@
-FIGURE 2 66. Ground Lead Recording. A ground electrode on the patient eliminates the 60-Hz AC artifact from power lines. A problem occurs when the impedance of 
-one of the active electrodes connected to grid 1 (G1) or G2 of the ampliﬁ  er becomes large relative to the other active electrode and the ground of the ampliﬁ  er. In this case, the 
-ground electrode becomes an active electrode. Depending on its site, it may introduce false cerebral activity (Ford, 1981): Ford, R.G. (1981): A practical guide to EEG recording 
-technique. Am. J. EEG Technol. 21: 79-101
-In this patient, the ground electrode was placed on the forehead and the low-impedance active electrode occurred in the occipital region. Therefore, the eye movement 
-artifacts were noted in the occipital region (asterisk) when the patient blinked his eyes. Due to the open circuit in channel 4 (O1-A1), O1 was not punched on G1 selection on the 
-selector board. Blink artifacts appear in channel 4 because ground electrode was on forehead. Artifacts appear in phase because Fp1, Fp2, and “active ” ground are on G1.13

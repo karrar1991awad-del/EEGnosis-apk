@@ -1,3 +1,0 @@
-FIGURE 28. Eye Movement Artifact. A 38-week CA infant with apnea. EEG shows biphasic sharp theta activity in bilateral prefrontal regions, which simulate frontal sharp 
-transients. Eye lead channels can diﬀ erentiate between these two conditions. When activity points to diﬀ erent directions as in this EEG, it indicates that this is eye movement 
-artifact rather than brain waves.

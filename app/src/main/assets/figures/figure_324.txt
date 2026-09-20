@@ -1,7 +1,0 @@
-FIGURE 4 70. Focal Voltage Attenuation; Encephalomalacia Secondary to Neonatal Bacterial Meningitis. EEG of a 20-month-old-left-handed girl with a history of 
-streptococcal meningitis during neonatal period. She subsequently developed spastic right hemiparesis, developmental delay, and intractable epilepsy. There is diﬀ use voltage 
-attenuation over the entire left hemisphere and nearly continuous spike-wave discharges in the right hemisphere, maximal in the central-temporal region. MRI shows massive 
-encephalomalacia in the left hemisphere and lesser degree in the right hemisphere with bilateral ventricular dilatation, greater on the left.
- Hemispheric voltage attenuation is due to either decreased cortical electrical activity production or increased impedance between the cortex and the recording electrodes 
-(e.g., subdural hematoma, subgaliel hematoma). Reduction in cortical EEG generator of all activity is due to congenital lesions such as porencephaly and Sturge-Weber syndrome 
-or acquired lesions such as meningitis, encephalitis, HHE, and stroke. EEG alone cannot diﬀ erentiate between these causes.5,20

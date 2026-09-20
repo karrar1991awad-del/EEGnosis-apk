@@ -1,9 +1,0 @@
-FIGURE 9 109. lctal Slow Direct-Current (DC) Shift; Temporal Lobe Epilepsy Caused by Ganglioglioma. A 15-year-old boy with intractable epilepsy due to a right mesial 
-temporal ganglioglioma. His seizure typesconsists of hypomotor and occasional gelastic seizure. Ictal EEG onset during arousal shows slow baseline shift, maximal at T4 and T6 
-(open arrow), followed by rhythmic delta activity in the right temporal region (arrow). LFF of 0.1 Hz was used.
-An ictal slow DC shift is a slow and sustained change in EEG voltage resulting from a change in the function or interaction of neurons, glia, or both.125,126 Ictal slow baseline shifts 
-could be recorded with DC ampliﬁ  ers. They were not seen with conventional EEG systems. When the high-pass ﬁ  lter was opened to 0.01–0.1 Hz, ictal baseline shifts were present 
-in scalp and intracranially recorded seizures and could have localizing value.127–130 
-Usually, scalp-recorded ictal DC shifts are not successfully recorded because movements during clinical seizures cause artifacts. They are highly speciﬁ  c but low in sensitivity. 
-Ictal DC shifts were seen in 14–40% of recorded seizures and their sensitivity varied.127,131,132 Scalp-recorded DC shifts were detected when seizures were clinically intense, while no 
-slow shifts were observed in small seizures.127 They were restricted to 1–2 electrodes, very closely related to the onset of low-voltage fast activity and electrodecrement.133

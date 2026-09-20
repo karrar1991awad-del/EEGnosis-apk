@@ -1,7 +1,0 @@
-FIGURE 9 111. Paradoxical Lateralization of Epileptic Focus. A 13-year-old boy with well-controlled secondarily generalized tonic-clonic seizures. Axial FLAIR MRI (arrow) 
-and coronal T2-weighted MRI show hyperintensity in the right dorsolateral-mesial frontal region. EEG shows bilateral synchronous sharp and slow waves with left frontal 
-predominance (*).
-Epileptic focus on the mesial surface of one cerebral hemisphere can project epileptiform activity obliquely to the opposite hemisphere, leading to paradoxical lateralization of 
-the epileptiform activity.42 “Paradoxical lateralization” is most likely the result of a horizontal dipole located within the interhemispheric ﬁ  ssure.43
-Magnetoencephalogram (MEG) detects only dipoles horizontal to the surface and is more sensitive to generators lining the sulci than ones from gyral surfaces. Therefore, MEG 
-may be helpful in detecting an epileptic focus in the mesial aspect of hemispheres.92

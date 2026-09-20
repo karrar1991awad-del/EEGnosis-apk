@@ -1,4 +1,0 @@
-FIGURE 265. Photocell Artifact. During ﬂ  ash photic stimulation, high impedance in electrodes may cause a “photocell artifact.” Each ﬂ  ash causes a minute photochemical 
-reaction that, in the presence of high impedance, causes the electrode to act as a photocell, a brief spike-like transient appearing simultaneously with the ﬂ  ash. 
-One can distinguish this photoelectric response from photomyoclonic responses because the latter have small but measurable latencies, detectable by increasing paper speed 
-to 60 mm/sec.13

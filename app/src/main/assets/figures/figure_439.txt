@@ -1,4 +1,0 @@
-FIGURE 67. EEG Reactivity in Coma; Diﬀ use Voltage Attenuation. (Same patient as in Figure 6-6) EEG of a 20-month-old girl with nonaccidental trauma (NAT). There is a 
-period of background attenuation without delta slowing following stimulation.
-In severe encephalopathy, the EEG does not show reactivity to any stimulation and is called “invariant EEG.” In milder encephalopathy, the EEG shows spontaneous variability, 
-evidence of EEG reactivity to stimulation, typically attenuation of amplitude, reduction of delta activity, and increase in frequency.13

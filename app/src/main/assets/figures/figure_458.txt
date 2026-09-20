@@ -1,8 +1,0 @@
-FIGURE 6 26. Alpha Coma; Pontine Stroke. A 10-year-old boy with pontine stroke. He was in coma and died 4 days after this EEG recording. EEG shows broadly distributed 
-alpha activity with anterior predominance and is nonreactive to external stimuli. This EEG pattern is termed “alpha coma.”
-Alpha coma is an EEG pattern in the alpha frequency range (8–13 Hz) that occurs with a generalized distribution in a comatose patient. It is monomorphic and does not change 
-in response to sensory stimuli and is, most commonly, predominant in the frontal region. The alpha coma pattern is most frequently seen in anoxic encephalopathy caused by 
-cardiorespiratory arrest and associated with a very poor prognosis. Alpha coma can also be seen in toxic encephalopathies that are very similar to that seen with cardiorespiratory 
-arrest, except with beta activity superimposed on the alpha activity. Other etiologies include head trauma, CJD, brain stem lesions, especially pontomesencephalic, and 
-encephalitis. Prognosis of alpha coma pattern depends on the underlying causes of coma. Etiology and outcome of alpha coma patterns and other rhythmic coma patterns 
-(beta, theta, and spindle) were similar. One type of rhythmic pattern can change to another. Reactive rhythmic coma was associated with favorable outcome.5,52,54,55

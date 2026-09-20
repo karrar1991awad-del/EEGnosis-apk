@@ -1,6 +1,0 @@
-FIGURE 5 42. Paradoxical Activation; Hypoxic Encephalopathy. EEG of a 13-month-old girl with near drowning after being left unattended in the bathtub. There is a 
-period of background attenuation and more severe delta slowing following stimulation. This EEG reactivity is called “paradoxical activation.” 
-In severe encephalopathy, the EEG does not show reactivity to any stimulation and is called “invariant EEG.” In milder encephalopathy, the EEG shows spontaneous variability, 
-evidence of EEG reactivity to stimulation, typically attenuation of amplitude, reduction of delta activity, and increase in frequency. Paradoxical activation is a period of more severe 
-delta slowing following painful stimulation. It is seen less commonly than a typical response to stimuli but is associated with a milder degree of encephalopathy than the invariant 
-EEG.84

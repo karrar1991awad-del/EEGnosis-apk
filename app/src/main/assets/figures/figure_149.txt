@@ -1,2 +1,0 @@
-FIGURE 2 32. Patting Artifact. (Same patient as in Figure 2-31) The next page of EEG shows electrode artifact in the Cz, which is caused by loosening of the electrode. 
-This gives a good explanation why patting artifact in the previous page occurred only in the Cz electrode.

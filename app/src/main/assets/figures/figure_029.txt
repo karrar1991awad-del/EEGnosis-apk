@@ -1,5 +1,0 @@
-FIGURE 1 27. Posterior Slow-Wave Transients (Occipital Sharp Transients); Associated with Eye Movements. Posterior slow-wave transients associated with eye 
-movements is an EEG pattern consisting of a monophasic or biphasic slow transient with a duration of 200–400 msec and a voltage of up to 200 μV in the occipital regions (*). 
-The latency of 100–500 msec is noted after the eyeblinks or eye movements. The initial component of the transient is surface positive. The ascending phase is steeper than the 
-descending phase. This EEG pattern is seen in children age 6 months to 10 years, but seen most commonly in children aged 2–3 years. This EEG pattern is a normal phenomenon 
-but may be misinterpreted as epileptiform activity.9,10

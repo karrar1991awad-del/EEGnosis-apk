@@ -1,4 +1,0 @@
-FIGURE 29. Skull Defect; Eﬀ ect on Eye Blinking Artifact. A 17-year-old boy with a skull defect in the right frontal region. EEG shows asymmetric eye blinking artifact 
-(asterisk) with lower voltage in the right prefrontal region and breach rhythm over the right hemisphere, especially parasagittal region.
-When the dipole axis of the EEG generator is oriented perpendicular to the skull defect, the defect usually increases the EEG voltage as seen in the breach rhythm. On the other 
-hand, when the dipole axis of the EEG generator is parallel to the skull defect, as seen in the eye movement, the skull defect decreases the EEG voltage.4

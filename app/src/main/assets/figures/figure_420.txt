@@ -1,7 +1,0 @@
-FIGURE 5 59. Background Asynchrony; Diﬀ use Axonal Injury: Vasogenic Edema in Corpus Callosum. EEG of a 7-year-old boy with moderate traumatic brain injury (TBI) 
-shows asynchronous background activity. Diﬀ usion-weighted image shows hemorrhages in multiple areas, including the genu of the corpus callosum (CC) (open arrow), right 
-hippocampus (arrow), white matter (double arrows), and white-gray matter junction (arrow head). 
-Mild TBI is associated with diﬀ usion tensor imaging (DTI) abnormalities in the genu. In more severe TBI, both the genu and the splenium are aﬀ ected. DTI suggests a larger 
-contribution of vasogenic edema in the genu than in the splenium in TBI.117
-The CC may play a critical role in interhemispheric synchronization of cortical neuronal electrical activity. Disruption of CC may cause cortical areas to be released from such 
-synchronization and act autonomously.118,119

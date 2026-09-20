@@ -1,8 +1,0 @@
-FIGURE 8 12. Juvenile Myoclonic Epilepsy (JME); Myoclonic Seizures. A 15-year-old girl with JME. EEG during myoclonic jerks (MJ) of the right arm (*) shows symmetrically 
-bilateral synchronous polyspike-wave discharges time-locked with the jerk followed by 2-sec bilateral synchronous, 3-Hz polyspike-wave discharges, and a subsequent diﬀ use 
-electrodecremental event.
-A typical ictal EEG in myoclonic seizure is bilateral synchronous and symmetric polyspike-wave discharge, immediately preceding a myoclonic jerk. The polyspike component 
-contains 5–20 spikes, with a frequency between 12 and 16 Hz. The amplitude of spikes is typically increasing and is maximal over the frontal leads where it reaches 200–300 μV. 
-Slow waves of variable frequency (3–4 Hz) and amplitude (200–350 μV) often precede or follow the polyspikes that result in a polyspike-wave complex that lasts much longer 
-than the MJ (approximately 2–4 sec). The number of spikes is associated with the MJ intensity: there are fewer spikes and a more pronounced slow component when the MJ is 
-mild. Back averaging shows that the conduction time, between the apex of the spike and the onset of the MJ, is short (20–50 msec) and characteristic of a cortical myoclonus.17

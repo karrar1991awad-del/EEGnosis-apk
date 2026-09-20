@@ -1,7 +1,0 @@
-FIGURE 7 30. MRI in Aicardi Syndrome. Aicardi syndrome is a genetic disorder transmitted as an X-linked dominant trait with hemizygous lethality in males. It is 
-characterized by a triad of infantile spasms, agenesis of the corpus callosum, and chorioretinal lacunae. Other features include malformations of cortical development 
-(polymicrogyria, periventricular heterotopia, focal cortical dysplasia), intracranial/interhemispheric cysts, papillomas of the choroid plexuses, gross hemispheric asymmetry, 
-coloboma of the optic disc, microphthalmia, and vertebral and costal anomalies.28
-(A, B, C) Axial T2-weighted MRIs show microphthalmia (double arrows), periventricular heterotopia (arrow), polymicrogyria with schizencephaly (large arrow), and absence 
-of corpus callosum (curved arrow). (D, E) Axial T1-weighted MRIs demonstrate interhemispheric and intraventricular cysts (arrow), focal cortical dysplasia (double arrows), and 
-papilloma of chloroid plexus (large arrow). (F) Sagittal T1-weighted MRI shows focal cortical dysplasia (arrow) and a Dandy-Walker cyst (*).

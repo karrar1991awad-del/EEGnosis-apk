@@ -1,5 +1,0 @@
-FIGURE 7 41. Lennox-Gastaut Syndrome (LGS); Runs of Rapid Spikes or Paroxysmal Fast Activity (PFA). (Same patient as in Figure 7-40) The EEG during sleep shows 
-“runs of rapid spikes” (arrow), which are also called grand mal discharge, fast paroxysmal rhythms, rhythmic spikes, generalized paroxysmal fast activity (GPFA), or paroxysmal 
-fast activity (PFA). It is seen only in NREM sleep and occurs in older children, adolescents, and younger adults. It consists of bursts of spike discharges at a rate from 10 to 25/sec, 
-with voltage of 100–200 μV, usually generalized but maximum over frontal regions, and lasting for 2–10 sec. Bursts of more than 5-sec duration are usually associated with tonic 
-seizures.107 Although this EEG pattern is a hallmark of LGS, it can also be seen in other generalized epilepsies that have better outcome than in LGS.79

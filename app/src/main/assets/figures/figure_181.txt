@@ -1,2 +1,0 @@
-FIGURE 2 64. Electrode Pop. An electrode pop is the most common electrode artifact described as a single or multiple spike-like, negative or positive discharge. It is more 
-commonly positive. The popping is caused by an abrupt increase in electrode impedance, which may be related to impurity in the metal portion of the electrode.

@@ -1,8 +1,0 @@
-FIGURE 4 30. Background Asymmetry and Polymorphic Delta Activity (PDA); Embolic Stroke Secondary to Pneumococcal Septicemia. A 15-year-old boy with 
-metastatic medulloblastoma who developed a sudden-onset high fever, mental status change, right hemiparesis, and focal seizures described as head and eyes deviating to 
-the right side followed by GTCS. Blood culture was positive for streptococcal pneumoniae. Cranial MRI reveals multiple infarctions caused by septic emboli, maximal in the right 
-parietal region. EEG during sleep demonstrates continuously diﬀ use polymorphic delta activity (PDA), maximally expressed in the left hemisphere with suppression of beta 
-activity, spindles, and vertex waves in the left hemisphere. 
-Sleep spindles are generated in the reticular nucleus of the thalamus, and through thalamocortical neurons the cortex is triggered to generate spindle bursts.21 Extended 
-cortical areas in the centroparietal regions (pyramidal neurons), most likely the whole parietal cortex and the posterior part of the frontal cortex, are involved in the generation 
-of sleep spindles as recorded using the MEG.22 Lesions in the thalamocortical circuit, especially thalamus and parietal lobe, can attenuate the sleep spindles.5,23,24

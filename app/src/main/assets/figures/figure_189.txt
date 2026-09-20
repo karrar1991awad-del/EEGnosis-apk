@@ -1,5 +1,0 @@
-FIGURE 32. Interhemispheric Hypersynchrony. EEG of an infant 28 weeks CA with apnea. The tracing is discontinuous. Infants at less than 30 weeks CA have “paradoxical 
-hypersynchrony” whereby bursts of cerebral electrical activities are well synchronized and appear simultaneously between the two hemispheres. The pathophysiology of this 
-phenomenon is unknown. After 30 weeks CA, bursts of cerebral activities appear to be more asynchronous. The bursts of cerebral activities during quiet sleep are synchronized in 
-approximately 70% at 31–32 weeks CA, 80% at 33–34 weeks CA, and 100% after 37 weeks CA. 
-In infants less than 30 weeks CA, the average interburst interval (IBI) or quiescence is about 6–12 sec. The longest acceptable IBI is 30–35 sec.

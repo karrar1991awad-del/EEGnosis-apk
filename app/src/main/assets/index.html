@@ -523,7 +523,9 @@ window.addEventListener('keydown', e => {
   if (e.key === 'c') toggleCaption();
 });
 
-window.onload = init;
+window.onerror = function(msg, url, line, col, error) {   document.body.innerHTML = '<div style="padding:40px;color:#e5e7eb;background:#090d16;height:100vh;font-family:monospace;overflow:auto"><h1 style="color:#ef4444">EEGnosis Error</h1><p style="color:#fbbf24;margin-top:20px">' + msg + '</p><p style="font-size:12px;color:#9ca3af;margin-top:20px">Line: ' + line + ', Col: ' + col + '</p><pre style="font-size:11px;color:#6b7280;margin-top:20px;white-space:pre-wrap">' + (error && error.stack ? error.stack : 'no stack') + '</pre></div>';   return false; }; window.onload = function() {   try {     init();   } catch(e) {     document.body.innerHTML = '<div style="padding:40px;color:#e5e7eb;background:#090d16;height:100vh;font-family:monospace;overflow:auto"><h1 style="color:#ef4444">Init Error</h1><pre style="font-size:11px;color:#fbbf24;margin-top:20px;white-space:pre-wrap">' + e.toString() + '
+
+' + (e.stack || '') + '</pre></div>';   } };
 </script>
 </body>
 </html>

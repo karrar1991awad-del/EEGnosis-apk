@@ -1,4 +1,4 @@
-const MANIFEST_URL = "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/manifest.json";
+const MANIFEST_URL = "https://cdn.jsdelivr.net/gh/karrar1991awad-del/eegnosis-apk@main/manifest.json";
 const APP_NAME = "EEGnosis";
 const SECTION_COLORS = {
   "Normal and Benign Variants": "#5faed9",

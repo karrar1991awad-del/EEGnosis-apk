@@ -1,27 +1,22 @@
 package com.eegnosis.atlas;
 
-import android.app.DownloadManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
+import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.webkit.WebViewAssetLoader;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -31,29 +26,40 @@ import java.util.zip.ZipInputStream;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "EEGnosis";
-    private static final String MANIFEST_URL = "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/manifest.json";
     private WebView webView;
+    private WebViewAssetLoader assetLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        assetLoader = new WebViewAssetLoader.Builder()
+            .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
+            .addPathHandler("/figures/", new WebViewAssetLoader.InternalStoragePathHandler(this,
+                new File(getFilesDir(), "figures")))
+            .build();
+
         webView = new WebView(this);
         WebSettings s = webView.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
         s.setAllowFileAccess(true);
         s.setAllowContentAccess(true);
-        s.setAllowFileAccessFromFileURLs(true);
-        s.setAllowUniversalAccessFromFileURLs(true);
         s.setLoadWithOverviewMode(true);
         s.setUseWideViewPort(true);
         s.setCacheMode(WebSettings.LOAD_DEFAULT);
 
-        webView.setWebViewClient(new WebViewClient());
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
+                return assetLoader.shouldInterceptRequest(request.getUrl());
+            }
+        });
+
         webView.setWebChromeClient(new WebChromeClient());
         webView.addJavascriptInterface(new JSBridge(), "Android");
 
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl("https://appassets.androidplatform.net/assets/index.html");
         setContentView(webView);
     }
 
@@ -63,16 +69,14 @@ public class MainActivity extends AppCompatActivity {
         else super.onBackPressed();
     }
 
-    // ============================================================
-    //   JavaScript Bridge — يتواصل مع index.html
-    // ============================================================
     public class JSBridge {
 
         @JavascriptInterface
         public String getFiguresDir() {
             File dir = new File(getFilesDir(), "figures");
             if (!dir.exists()) dir.mkdirs();
-            return "file://" + dir.getAbsolutePath();
+            // استخدام الرابط الوهمي عبر WebViewAssetLoader
+            return "https://appassets.androidplatform.net/figures";
         }
 
         @JavascriptInterface
@@ -111,11 +115,9 @@ public class MainActivity extends AppCompatActivity {
                         if (!cacheDir.exists()) cacheDir.mkdirs();
                         File zipFile = new File(cacheDir, sectionId + ".zip");
 
-                        // تحديث الحالة
                         runOnUiThread(() -> webView.evaluateJavascript(
                             "updateProgress('" + sectionId + "', 0, 'downloading')", null));
 
-                        // تنزيل الملف
                         URL u = new URL(url);
                         HttpURLConnection conn = (HttpURLConnection) u.openConnection();
                         conn.setConnectTimeout(30000);
@@ -134,7 +136,6 @@ public class MainActivity extends AppCompatActivity {
                         while ((read = in.read(buf)) != -1) {
                             fos.write(buf, 0, read);
                             downloaded += read;
-
                             if (total > 0) {
                                 int percent = (int) ((downloaded * 100) / total);
                                 if (percent - lastPercent >= 2) {
@@ -148,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
                         fos.close();
                         in.close();
 
-                        // فك الضغط
                         runOnUiThread(() -> webView.evaluateJavascript(
                             "updateProgress('" + sectionId + "', 100, 'extracting')", null));
 
@@ -158,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
                         unzip(zipFile, figuresDir);
                         zipFile.delete();
 
-                        // علامة الاكتمال
                         File flag = new File(figuresDir, ".done_" + sectionId);
                         flag.createNewFile();
 
@@ -166,7 +165,6 @@ public class MainActivity extends AppCompatActivity {
                             "updateProgress('" + sectionId + "', 100, 'done')", null));
 
                     } catch (Exception e) {
-                        Log.e(TAG, "Download failed", e);
                         final String msg = e.getMessage();
                         runOnUiThread(() -> webView.evaluateJavascript(
                             "updateProgress('" + sectionId + "', -1, 'error: " + msg + "')", null));
@@ -188,30 +186,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // ============================================================
-    //   فك ضغط ZIP
-    // ============================================================
     private void unzip(File zipFile, File targetDir) throws Exception {
         ZipInputStream zis = new ZipInputStream(new BufferedInputStream(
-            new java.io.FileInputStream(zipFile)));
+            new FileInputStream(zipFile)));
         ZipEntry entry;
         byte[] buffer = new byte[8192];
 
         while ((entry = zis.getNextEntry()) != null) {
             String name = entry.getName();
             File outFile = new File(targetDir, name);
-
-            // حماية من Path Traversal
             if (!outFile.getCanonicalPath().startsWith(targetDir.getCanonicalPath())) {
                 continue;
             }
-
             if (entry.isDirectory()) {
                 outFile.mkdirs();
             } else {
                 File parent = outFile.getParentFile();
                 if (parent != null && !parent.exists()) parent.mkdirs();
-
                 FileOutputStream fos = new FileOutputStream(outFile);
                 int len;
                 while ((len = zis.read(buffer)) > 0) {

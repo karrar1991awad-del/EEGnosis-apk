@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-20",
+  "total_figures": 766,
+  "sections": [
+    {
+      "id": "01_normal",
+      "name": "Normal & Benign Variants",
+      "full_name": "Normal and Benign Variants",
+      "count": 122,
+      "first": 3,
+      "last": 124,
+      "size_mb": 21.3,
+      "zip": "section_01_normal.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_01_normal.zip"
+    },
+    {
+      "id": "02_artifacts",
+      "name": "Artifacts",
+      "full_name": "Artifacts",
+      "count": 76,
+      "first": 125,
+      "last": 200,
+      "size_mb": 12.2,
+      "zip": "section_02_artifacts.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_02_artifacts.zip"
+    },
+    {
+      "id": "03_newborn",
+      "name": "Newborn",
+      "full_name": "Newborn",
+      "count": 74,
+      "first": 201,
+      "last": 274,
+      "size_mb": 11.1,
+      "zip": "section_03_newborn.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_03_newborn.zip"
+    },
+    {
+      "id": "04_focal_nonepi",
+      "name": "Focal Nonepileptiform",
+      "full_name": "Focal Nonepileptiform Activity",
+      "count": 114,
+      "first": 275,
+      "last": 388,
+      "size_mb": 19.1,
+      "zip": "section_04_focal_nonepi.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_04_focal_nonepi.zip"
+    },
+    {
+      "id": "05_gen_nonepi",
+      "name": "Generalized Nonepileptiform",
+      "full_name": "Generalized Nonepileptiform Activity",
+      "count": 82,
+      "first": 389,
+      "last": 470,
+      "size_mb": 12.9,
+      "zip": "section_05_gen_nonepi.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_05_gen_nonepi.zip"
+    },
+    {
+      "id": "06_icu",
+      "name": "ICU",
+      "full_name": "ICU",
+      "count": 58,
+      "first": 471,
+      "last": 528,
+      "size_mb": 9.0,
+      "zip": "section_06_icu.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_06_icu.zip"
+    },
+    {
+      "id": "07_epileptic_enceph",
+      "name": "Epileptic Encephalopathy",
+      "full_name": "Epileptic Encephalopathy",
+      "count": 84,
+      "first": 529,
+      "last": 612,
+      "size_mb": 15.7,
+      "zip": "section_07_epileptic_enceph.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_07_epileptic_enceph.zip"
+    },
+    {
+      "id": "08_gen_epilepsy",
+      "name": "Generalized Epilepsy",
+      "full_name": "Generalized Epilepsy",
+      "count": 62,
+      "first": 613,
+      "last": 674,
+      "size_mb": 10.3,
+      "zip": "section_08_gen_epilepsy.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_08_gen_epilepsy.zip"
+    },
+    {
+      "id": "09_focal_epilepsy",
+      "name": "Focal Epilepsy",
+      "full_name": "Focal Epilepsy",
+      "count": 94,
+      "first": 675,
+      "last": 768,
+      "size_mb": 15.2,
+      "zip": "section_09_focal_epilepsy.zip",
+      "zip_url": "https://github.com/karrar1991awad-del/eegnosis-apk/releases/download/v1.0/section_09_focal_epilepsy.zip"
+    }
+  ]
+}

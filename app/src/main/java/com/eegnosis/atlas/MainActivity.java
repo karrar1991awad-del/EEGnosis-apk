@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         assetLoader = new WebViewAssetLoader.Builder()
             .addPathHandler("/assets/", new WebViewAssetLoader.AssetsPathHandler(this))
             .addPathHandler("/figures/", new WebViewAssetLoader.InternalStoragePathHandler(this,
-                new File(getFilesDir(), "figures")))
+                new File(getExternalFilesDir(null), "figures")))
             .build();
 
         webView = new WebView(this);
@@ -73,22 +73,22 @@ public class MainActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public String getFiguresDir() {
-            File dir = new File(getFilesDir(), "figures");
+            File dir = new File(getExternalFilesDir(null), "figures");
             if (!dir.exists()) dir.mkdirs();
-            // استخدام الرابط الوهمي عبر WebViewAssetLoader
             return "https://appassets.androidplatform.net/figures";
         }
 
         @JavascriptInterface
         public boolean isSectionDownloaded(String sectionId) {
-            File flag = new File(getFilesDir(), "figures/.done_" + sectionId);
+            File flag = new File(getExternalFilesDir(null), "figures/.done_" + sectionId);
             return flag.exists();
         }
 
         @JavascriptInterface
         public String getDownloadedSections() {
             try {
-                File dir = getFilesDir();
+                File dir = new File(getExternalFilesDir(null), "figures");
+                if (!dir.exists()) return "[]";
                 JSONArray arr = new JSONArray();
                 File[] files = dir.listFiles();
                 if (files != null) {
@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         HttpURLConnection conn = (HttpURLConnection) u.openConnection();
                         conn.setConnectTimeout(30000);
                         conn.setReadTimeout(60000);
+                        conn.setInstanceFollowRedirects(true);
                         conn.connect();
 
                         int total = conn.getContentLength();
@@ -152,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(() -> webView.evaluateJavascript(
                             "updateProgress('" + sectionId + "', 100, 'extracting')", null));
 
-                        File figuresDir = new File(getFilesDir(), "figures");
+                        File figuresDir = new File(getExternalFilesDir(null), "figures");
                         if (!figuresDir.exists()) figuresDir.mkdirs();
 
                         unzip(zipFile, figuresDir);
@@ -175,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
         @JavascriptInterface
         public void deleteSection(String sectionId) {
-            File figuresDir = new File(getFilesDir(), "figures");
+            File figuresDir = new File(getExternalFilesDir(null), "figures");
             File flag = new File(figuresDir, ".done_" + sectionId);
             if (flag.exists()) flag.delete();
         }
